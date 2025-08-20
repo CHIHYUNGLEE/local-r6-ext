@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>잠시만 기다려 주세요</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fefefe;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #ff6b6b;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 0.5em;
+    }
+
+    .spinner {
+      margin: 2em auto;
+      width: 50px;
+      height: 50px;
+      border: 6px solid #eee;
+      border-top: 6px solid #ff6b6b;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    small {
+      display: block;
+      margin-top: 2em;
+      color: #999;
+    }
+  </style>
+  <script>
+    // 5초 후 자동 재접속
+    setTimeout(() => {
+      window.location.href = '/r6/default.jsp';
+    }, 5000);
+  </script>
+</head>
+<body>
+  <div class="container">
+    <div class="spinner"></div>
+    <h1>현재 접속자 수가 많아요 😥</h1>
+    <p>접속이 지연되고 있습니다.<br />자동으로 접속을 시도 중이니<br />잠시만 기다려 주세요!</p>
+    <small>5초 후 다시 연결 시도 중... ⏳</small>
+  </div>
+</body>
+</html>

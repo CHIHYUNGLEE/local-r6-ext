@@ -1,0 +1,31 @@
+.attachContentImage{text-align:center; font-size:0;}
+.attachContentImage > img{display:inline-block;}
+
+.SympathyViewer .addSympathy .btn.like{background:url(../../../img/component/sympathy/angry.png); background-size: 55px 55px;}
+.SympathyViewer .addSympathy .btn.like .icon{background:url(../../../img/component/sympathy/angry.png);}
+.SympathyViewer .addSympathy .btn.useful{background:url(../../../img/component/sympathy/cry.png); background-size: 55px 55px;}
+.SympathyViewer .addSympathy .btn.useful .icon{background:url(../../../img/component/sympathy/cry.png);}
+.SympathyViewer .addSympathy .btn.nice{background:url(../../../img/component/sympathy/Haha.png); background-size: 55px 55px;}
+.SympathyViewer .addSympathy .btn.nice .icon{background:url(../../../img/component/sympathy/Haha.png);}
+.SympathyViewer .addSympathy .btn.cheerUp{background:url(../../../img/component/sympathy/Like.png); background-size: 55px 55px;}
+.SympathyViewer .addSympathy .btn.cheerUp .icon{background:url(../../../img/component/sympathy/Like.png);}
+.SympathyViewer .addSympathy .btn.sad{background:url(../../../img/component/sympathy/wow.png); background-size: 55px 55px;}
+.SympathyViewer .addSympathy .btn.sad .icon{background:url(../../img/component/sympathy/wow.png);}
+/* .SympathyViewer .addSympathy .btn.laugh{background:url(img/component/sympathy/btn_sym_laugh.gif)}
+.SympathyViewer .addSympathy .btn.laugh .icon{background:url(img/component/sympathy/btn_sym_laugh_icon.png)}
+.SympathyViewer .addSympathy .btn.thank{background:url(img/component/sympathy/btn_sym_thank.gif)}
+.SympathyViewer .addSympathy .btn.thank .icon{background:url(img/component/sympathy/btn_sym_thank_icon.png)}
+.SympathyViewer .addSympathy .btn.happy{background:url(img/component/sympathy/btn_sym_happy.gif)}
+.SympathyViewer .addSympathy .btn.happy .icon{background:url(img/component/sympathy/btn_sym_happy_icon.png)} */
+
+.SympathyViewer .sympathyRight .btnIcon .txtArea.like{background:url(../../../img/component/sympathy/angry.png) 0 0 no-repeat; background-size: 19px 19px;}
+.SympathyViewer .sympathyRight .btnIcon .txtArea.useful{background:url(../../../img/component/sympathy/cry.png) 0 0 no-repeat; background-size: 19px 19px;}
+.SympathyViewer .sympathyRight .btnIcon .txtArea.nice{background:url(../../../img/component/sympathy/Haha.png) 0 0 no-repeat; background-size: 19px 19px;}
+.SympathyViewer .sympathyRight .btnIcon .txtArea.cheerUp{background:url(../../../img/component/sympathy/Like.png) 0 0 no-repeat; background-size: 19px 19px;}
+.SympathyViewer .sympathyRight .btnIcon .txtArea.sad{background:url(../../../img/component/sympathy/wow.png) 0 0 no-repeat; background-size: 19px 19px;}
+
+.OpnViewerEditor_errorMsg {left:40px;top:45px;background-color:#FFFFFF;position:absolute; height:20px;}
+.OpnViewerEditor_errorMsg .selectWrapper {border-right:1px solid #e6e5e1; border-bottom:1px solid #e6e5e1; border-top:0px solid #e6e5e1; border-left:0px solid #e6e5e1;float:left;}
+.OpnViewerEditor_errorMsg .selectWrapper .textWrpaer{margin:0; font-size:10px; border:1px solid #d3c8b4; line-height:150%;color:#7e6042;}
+.OpnViewerEditor_errorMsg .tip{background:url(../../../img/component/RecommendEditor/exc.gif) no-repeat 0px 1px; padding-left:16px;}
+.OpnViewerEditor_errorMsg P{margin:0; padding:0;}

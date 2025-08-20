@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="com.kcube.ekp.mbs.MbItem" table="mb_item">
+		<id name="id" column="itemid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_ITEM</param>
+			</generator>
+		</id>
+		<property name="tenantId" column="tenantid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="gid" column="gid" type="java.lang.Long"/>
+		<property name="pid" column="pid" type="java.lang.Long" />
+		<component name="folder" class="com.kcube.doc.Item$Folder">
+			<property name="folderId" column="kmid" type="java.lang.Long" />
+			<property name="level1" column="level1" type="java.lang.Long" />
+			<property name="level2" column="level2" type="java.lang.Long" />
+			<property name="level3" column="level3" type="java.lang.Long" />
+			<property name="level4" column="level4" type="java.lang.Long" />
+		</component>
+		<property name="inAppId" column="inappid" type="java.lang.Long"/>
+		<property name="step" column="step" type="integer" />
+		<property name="pos" column="pos" type="integer" />
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString" />		
+		<component name="author" class="com.kcube.sys.usr.User">
+			<property name="userId" column="auth_userid" type="java.lang.Long"/>
+			<property name="name" column="auth_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="auth_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="rgst_userid" type="java.lang.Long"/>
+			<property name="name" column="rgst_name" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date"/>
+		<property name="grpDate" column="grp_date" type="java.util.Date"/>
+		<property name="rsrvDate" column="rsrv_date" type="java.util.Date"/>
+		<property name="lastUpdt" column="last_updt" type="java.util.Date"/>
+		<property name="clob" column="content" type="clob"/>
+		<property name="readCnt" column="read_cnt" type="integer"/>
+		<property name="rcmdCnt" column="rcmd_cnt" type="integer"/>
+		<property name="opnCnt" column="opn_cnt" type="integer"/>
+		<property name="rplyCnt" column="rply_cnt" type="integer" />
+		<property name="sympathyCnt" column="sympathy_cnt" type="integer" />
+		<property name="scrpCnt" column="scrp_cnt" type="integer" />		
+		<property name="agreeCnt" column="agree_cnt" type="integer" />
+		<property name="opposeCnt" column="oppose_cnt" type="integer" />
+		<property name="flagCode" column="flag_code" type="integer"/>
+		<property name="scrtLevel" column="scrt_level" type="integer"/>
+		<property name="status" column="status" type="integer"/>
+		<property name="visible" column="isvisb" type="boolean" />
+		<property name="announced" column="isannounced" type="boolean" />
+		<property name="anncStartDate" column="annc_sdate" type="java.util.Date" />
+		<property name="anncEndDate" column="annc_edate" type="java.util.Date" />
+		<property name="exprMonth" column="expr_mnth" type="integer" />
+		<property name="exprDate" column="expr_date" type="java.util.Date" />
+		<property name="evalUserId" column="eval_userid" type="java.lang.Long"/>
+		<property name="evalDate" column="eval_date" type="java.util.Date" />
+		<component name="picture" class="com.kcube.sys.upload.Upload">
+			<property name="path" column="thumb_save_path" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="type" column="thumb_save_code" type="integer"/>
+		</component>
+		<property name="thumbs" column="isthumbs" type="boolean" />
+		<property name="fileExt" column="file_ext" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="trnsSrc" column="trns_src" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="trnsKey" column="trns_key" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="mobile" column="ismobile" type="boolean"/>
+		<property name="cstmField1" column="cstm_field1" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="cstmField2" column="cstm_field2" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="cstmField3" column="cstm_field3" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="vrsnNum" column="vrsn_num" type="integer" />
+		<component name="vrsnUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="vrsn_userid" type="java.lang.Long" />
+			<property name="name" column="vrsn_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="vrsn_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<set name="attachments" inverse="true" lazy="true" order-by="sort">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.ekp.mbs.MbItem$Attachment"/>
+		</set>
+		<set name="opinions" inverse="true" lazy="true" order-by="gid, opnid">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.ekp.mbs.MbItem$Opinion"/>
+		</set>
+		<set name="references" inverse="true" lazy="true" sort="natural">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.ekp.mbs.MbItem$Reference"/>
+		</set>
+		<list name="securities" table="mb_item_scrt" lazy="true">
+			<key column="itemid"/>
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.doc.Item$Security">
+				<property name="title" column="title" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="computed" column="iscomp" type="boolean"/>
+				<property name="xid" column="xid" type="java.lang.Long"/>
+			</composite-element>
+		</list>
+		<set name="sympathies" table="mb_item_sympathy" lazy="true" order-by="inst_date">
+			<key column="itemid"/>
+			<composite-element class="com.kcube.doc.symp.Sympathy">
+				<property name="userId" column="userid" type="java.lang.Long"/>
+				<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="sympType" column="symp_type" type="integer"/>
+				<property name="instDate" column="inst_date" type="java.util.Date"/>
+			</composite-element>
+		</set>
+		<list name="tags" table="mb_item_tag" lazy="true">
+			<key column="itemid"/>
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.doc.Item$Tag">
+				<property name="tag" column="tag" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="itemDate" column="item_date" type="java.util.Date"/>
+				<property name="visible" column="isvisb" type="boolean"/>
+			</composite-element>
+		</list>
+	</class>
+	<class name="com.kcube.ekp.mbs.MbItem$Attachment" table="mb_item_file">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_ITEM_FILE</param>
+			</generator>
+		</id>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="filesize" column="file_size" type="java.lang.Long"/>
+		<property name="dnldCnt" column="dnld_cnt" type="integer"/>
+		<property name="type" column="save_code" type="integer"/>
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="thumbType" column="thumb_save_code" type="integer"/>
+		<property name="thumbPath" column="thumb_save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="imgField" column="isimgfield" type="boolean" />
+		<property name="sort" column="sort" type="java.lang.Long" />
+		<many-to-one name="item" column="itemid" class="com.kcube.ekp.mbs.MbItem"/>
+	</class>
+	<class name="com.kcube.ekp.mbs.MbItem$Opinion" table="mb_item_opn">
+		<id name="id" column="opnid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_ITEM_OPN</param>
+			</generator>
+		</id>
+		<property name="gid" column="gid" type="java.lang.Long"/>
+		<property name="itemId" column="itemid" type="java.lang.Long"/>
+		<property name="mobile" column="ismobile" type="boolean" />
+		<property name="content" column="content" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date"/>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="userid" type="java.lang.Long"/>
+			<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="rgstUserId" column="rgst_userid" type="java.lang.Long" />
+		<property name="likeCnt" column="like_cnt" type="java.lang.Long" />
+	</class>
+	<class name="com.kcube.ekp.mbs.MbItem$Reference" table="mb_item_rfrn">
+		<id name="id" column="rfrnid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_ITEM_RFRN</param>
+			</generator>
+		</id>
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<property name="query" column="rfrn_query" type="com.kcube.lib.jdbc.EncString"/>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="userid" type="java.lang.Long"/>
+			<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="extrAppId" column="extr_appid" type="java.lang.Long"/>
+		<many-to-one name="item" column="itemid" class="com.kcube.ekp.mbs.MbItem"/>
+	</class>
+	<class name="com.kcube.ekp.mbs.inapp.MbInApp" table="mb_inapp">
+		<id name="id" column="inappid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_INAPP</param>
+			</generator>
+		</id>
+		<property name="tenantId" column="tenantid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="kmId" column="kmid" type="java.lang.Long"/>
+		<property name="name" column="name" type="com.kcube.lib.jdbc.EncString"/>
+		<component name="author" class="com.kcube.sys.usr.User">
+			<property name="userId" column="auth_userid" type="java.lang.Long"/>
+			<property name="name" column="auth_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="auth_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="rgst_userid" type="java.lang.Long"/>
+			<property name="name" column="rgst_name" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date"/>
+		<property name="lastUpdt" column="last_updt" type="java.util.Date"/>
+		<property name="appType" column="app_type" type="java.lang.Long"/>
+		<property name="visible" column="isvisb" type="boolean" />
+		<property name="reserve" column="isrsrv" type="boolean"/>
+		<property name="exprPeriod" column="expr_period" type="integer"/>
+		<property name="opinion" column="isopn" type="boolean"/>
+		<property name="sympathy" column="issymp" type="boolean"/>
+		<property name="reply" column="isrply" type="boolean"/>
+		<property name="anony" column="isanony" type="boolean"/>
+		<property name="anonyOpn" column="isanonyopn" type="boolean"/>
+		<property name="prcsType" column="prcs_type" type="integer"/>
+		<property name="notiType" column="noti_type" type="integer"/>
+		<property name="unRead" column="isunread" type="boolean"/>
+		<property name="limitSize" column="isLimitSize" type="boolean"/>
+		<property name="maxFileSize" column="max_file_size" type="long"/>
+		<property name="maxDocSize" column="max_doc_size" type="long"/>
+		<property name="limitExt" column="islimitext" type="boolean"/>
+		<property name="invalidExt" column="invalidext" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="vote" column="isvote" type="boolean"/>
+		<property name="scrt" column="isscrt" type="boolean"/>
+		<property name="introduce" column="isintro" type="boolean"/>
+		<property name="intro" column="intro" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="showManager" column="isshowmanager" type="boolean"/>
+		<property name="template" column="istemplate" type="boolean"/>
+		<property name="clob" column="content" type="clob"/>
+		<property name="caution" column="iscaution" type="boolean"/>
+		<property name="statement" column="statement" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="url" column="url" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="popUp" column="ispopup" type="boolean"/>
+		<property name="popUpStyle" column="popupstyle" type="com.kcube.lib.jdbc.EncString"/>
+		<set name="attachments" inverse="true" lazy="true" sort="natural">
+			<key column="inappid"/>
+			<one-to-many class="com.kcube.ekp.mbs.inapp.MbInApp$Attachment"/>
+		</set>
+		<set name="references" inverse="true" lazy="true" sort="natural">
+			<key column="inappid"/>
+			<one-to-many class="com.kcube.ekp.mbs.inapp.MbInApp$Reference"/>
+		</set>
+		<list name="roles" table="mb_inapp_role" lazy="true">
+			<key column="inappid"/>
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.ekp.mbs.inapp.MbInApp$Security">
+				<property name="title" column="title" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="roleType" column="role_type" type="integer"/>
+				<property name="xid" column="xid" type="java.lang.Long"/>
+			</composite-element>
+		</list>
+	</class>
+	<class name="com.kcube.ekp.mbs.inapp.MbInApp$Attachment" table="mb_inapp_file">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_INAPP_FILE</param>
+			</generator>
+		</id>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="filesize" column="file_size" type="java.lang.Long"/>
+		<property name="dnldCnt" column="dnld_cnt" type="integer"/>
+		<property name="type" column="save_code" type="integer"/>
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<many-to-one name="item" column="inappid" class="com.kcube.ekp.mbs.inapp.MbInApp"/>
+	</class>
+	<class name="com.kcube.ekp.mbs.inapp.MbInApp$Reference" table="mb_inapp_rfrn">
+		<id name="id" column="rfrnid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_MB_INAPP_RFRN</param>
+			</generator>
+		</id>
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<property name="query" column="rfrn_query" type="com.kcube.lib.jdbc.EncString"/>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="userid" type="java.lang.Long"/>
+			<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="extrAppId" column="extr_appid" type="java.lang.Long"/>
+		<many-to-one name="item" column="inappid" class="com.kcube.ekp.mbs.inapp.MbInApp"/>
+	</class>
+</hibernate-mapping>

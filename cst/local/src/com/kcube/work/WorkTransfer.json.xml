@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<mapping name="read" class="com.kcube.work.trans.WorkTransfer">
+	<bean class="com.kcube.work.trans.WorkTransfer">
+		<value name="id" />
+		<value name="workId" />
+		<value name="resUser" />
+		<value name="reqUser" />
+		<value name="owner" />
+		<value name="resDate" />
+		<value name="reqDate" />
+		<value name="status" />
+		<value name="title" />
+		<value name="resComm" />
+		<value name="reqComm" />
+		<value name="totalCount" />
+		<value name="itemList" source="com.kcube.work.trans.WorkTransfer$WorkTransferItem"/>
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+	<bean class="com.kcube.work.trans.WorkTransfer$WorkTransferItem">
+		<value name="workId" />
+		<value name="title" />
+	</bean>
+</mapping>

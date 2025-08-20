@@ -1,0 +1,1183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration class="com.kcube.work.Work" version="2.2.5" name="admCtgr" category="5000">
+	<title>{"ko":"업무방","en":"WorkRoom","zh":"商务房","ja":"業務部屋"}</title>
+	<description><![CDATA[관리자가 분류를 정의할 수 있는 업무방입니다.]]></description>
+	<developer>KCUBE</developer>
+	<indexUrl>/work/usr.main.jsp</indexUrl>
+	<manageUrl>/work/adm.index.jsp</manageUrl>
+	<myDocUrl>/work/own.list.jsp</myDocUrl>
+	<portlets>
+		<portlet iframe="false" height="294" margin="0 0 20 0">
+			<name>{"ko":"업무방","en":"WorkRoom","zh":"商务房","ja":"業務部屋"}</name>
+			<url>/work/ptl.work.jsp</url>
+		</portlet>
+	</portlets>
+	<tabs>
+		<!-- ctgrMapReadOnly="false" 분류없음 사용 가능 -->
+		<map useCtgrMap="true" ctgrMapReadOnly="false" writeSecure="true" readSecure="true" />
+		<notify>
+			<entry key="assignWorkActor" alimiKey="assignWorkActorNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 담당자로 지정시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방의 담당자로 지정되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방의 담당자로 지정되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="assignWorkHelper" alimiKey="assignWorkHelperNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 협업자로 지정시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방의 협업자로 지정되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방의 협업자로 지정되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="assignWorkShare" alimiKey="assignWorkShareNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 공유자로 지정시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방의 공유자로 지정되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방의 공유자로 지정되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="updateWorkStatus" alimiKey="updateWorkStatusNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 진행사항 변경&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방의 진행상태가 변경되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방의 진행상태가 변경되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="deleteWork" alimiKey="deleteWorkNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 삭제시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방이 삭제되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방이 삭제되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.title}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="requestShare" alimiKey="requestShareNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 공유요청시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>담당 업무방의 공유요청이 있습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">담당 업무방의 공유요청이 있습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/usr.req.index.jsp&scMenuId=5&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/usr.req.index.jsp&scMenuId=5&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="approveShare" alimiKey="approveShareNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 공유요청 승인시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>요청한 공유요청이 승인되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">요청한 공유요청이 승인되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="rejectShare" alimiKey="rejectShareNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 공유요청 반려시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>요청한 공유요청이 반려되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">요청한 공유요청이 반려되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/usr.req.index.jsp&scMenuId=5&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/usr.req.index.jsp&scMenuId=5&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="requestReview" alimiKey="requestReviewNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 검토요청시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방의 검토 요청이 있습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방의 검토 요청이 있습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/prcs.read.jsp?prcsId=${item.id}&id=${item.item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/prcs.read.jsp?prcsId=${item.id}&id=${item.item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="requestApproval" alimiKey="requestApprovalNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 승인요청시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방의 승인 요청이 있습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방의 승인 요청이 있습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/prcs.read.jsp?prcsId=${item.id}&id=${item.item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">담당자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.actor.name}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/prcs.read.jsp?prcsId=${item.id}&id=${item.item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="completeReview" alimiKey="completeReviewNew" updateStr="1" name="{&quot;ko&quot;:&quot;업무방 검토완료시 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방이 검토완료 되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방이 검토완료 되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="completeApproval" alimiKey="completeApprovalNew" updateStr="1" name="{&quot;ko&quot;:&quot;업무방 승인완료시 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방이 승인완료 되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방이 승인완료 되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="needMoreReq" alimiKey="needMoreReqNew" updateStr="1" name="{&quot;ko&quot;:&quot;업무방 보완요청시 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무방 보완을 요청 합니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무방 보완을 요청 합니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="needMeetingReq" alimiKey="needMeetingReqNew" updateStr="1" name="{&quot;ko&quot;:&quot;업무 대면보고 요청시 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무 대면보고를 요청 합니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무 대면보고를 요청 합니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="retrievedApprReq" alimiKey="retrievedApprReqNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무 승인요청 중 회수시 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무 승인요청이 회수 되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무 승인요청이 회수 되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/prcs/usr.list.report.jsp&scMenuId=2&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/prcs/usr.list.report.jsp&scMenuId=2&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="retrievedReviewReq" alimiKey="retrievedReviewReqNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무 검토요청 중 회수시 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>업무 검토요청이 회수 되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">업무 검토요청이 회수 되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/prcs/usr.list.report.jsp&scMenuId=2&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.main.jsp?rightUrl=/work/prcs/usr.list.report.jsp&scMenuId=2&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+			<entry key="changedIncharger" alimiKey="changedInchargerNew" updateStr="1"
+				name="{&quot;ko&quot;:&quot;업무방 담당자 변경시, 변경된 담당자에게 알림&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>해당 업무방 담당자로 지정되었습니다.</title>
+					<content><![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">해당 업무방 담당자로 지정되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><A href="${domain}/default.jsp?spId=${item.spaceId}" target="_blank">${spaceName}</A></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;"><a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">${item.title}</a></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">조회링크</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">
+<a target="_blank" href="${domain}/work/usr.popup.read.jsp?id=${item.id}&spId=${item.spaceId}&appId=${item.appId}&csId=${item.classId}&mdId=${item.moduleId}">바로가기</a>
+</td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="1"   style="line-height:0%;background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]></content>
+				</value>
+			</entry>
+		</notify>
+		<alimi>
+			<entry key="assignWorkActorNew" 
+				important="true"
+				updateStr="3"
+				name="{&quot;ko&quot;:&quot;업무방 담당자로 지정시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방의 담당자로 지정되었습니다.","en":"업무방의 담당자로 지정되었습니다.","zh":"업무방의 담당자로 지정되었습니다.","ja":"업무방의 담당자로 지정되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="assignWorkHelperNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 협업자로 지정시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방의 협업자로 지정되었습니다.","en":"업무방의 협업자로 지정되었습니다.","zh":"업무방의 협업자로 지정되었습니다.","ja":"업무방의 협업자로 지정되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="assignWorkShareNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 공유자로 지정시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방의 공유자로 지정되었습니다.","en":"업무방의 공유자로 지정되었습니다.","zh":"업무방의 공유자로 지정되었습니다.","ja":"업무방의 공유자로 지정되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="updateWorkStatusNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 진행 상태 변경시 알림&quot;,&quot;en&quot;:&quot;Notify me upon work deletions&quot;,&quot;zh&quot;:&quot;删除任务时提醒&quot;,&quot;ja&quot;:&quot;Task削除時に通知&quot;}" 
+				checked="true" >
+	 			<title>{"ko":"업무방의 진행상태가 변경되었습니다.","en":"업무방의 진행상태가 변경되었습니다.","zh":"업무방의 진행상태가 변경되었습니다.","ja":"업무방의 진행상태가 변경되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="deleteWorkNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 삭제시 알림&quot;,&quot;en&quot;:&quot;Notify me upon work deletions&quot;,&quot;zh&quot;:&quot;删除任务时提醒&quot;,&quot;ja&quot;:&quot;Task削除時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"내 업무방이 삭제되었습니다.","en":"내 업무방이 삭제되었습니다.","zh":"내 업무방이 삭제되었습니다.","ja":"내 업무방이 삭제되었습니다."}</title>
+				<url></url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="requestShareNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 공유 요청 시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방의 공유 요청이 도착하였습니다.","en":"업무방의 공유 요청이 도착하였습니다.","zh":"업무방의 공유 요청이 도착하였습니다.","ja":"업무방의 공유 요청이 도착하였습니다."}</title>
+				<url>F:/work/usr.reqShare.list.jsp?menu=1</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="approveShareNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 공유 요청 승인 시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방의 공유 요청이 승인되었습니다.","en":"업무방의 공유 요청이 승인되었습니다.","zh":"업무방의 공유 요청이 승인되었습니다.","ja":"업무방의 공유 요청이 승인되었습니다."}</title>
+				<url>F:/work/usr.reqShare.list.jsp?menu=2</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="rejectShareNew"
+				important="true"
+				updateStr="3"
+				name="{&quot;ko&quot;:&quot;업무방 공유 요청 반려 시 알림&quot;,&quot;en&quot;:&quot;Notify me when designated as the person in charge of a subtask&quot;,&quot;zh&quot;:&quot;指定为子任务负责人时提醒&quot;,&quot;ja&quot;:&quot;SubTask担当者として指定時に通知&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방의 공유 요청이 반려되었습니다.","en":"업무방의 공유 요청이 반려되었습니다.","zh":"업무방의 공유 요청이 반려되었습니다.","ja":"업무방의 공유 요청이 반려되었습니다."}</title>
+				<url>F:/work/usr.reqShare.list.jsp?menu=2</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="requestReviewNew" 
+				important="true"
+				updateStr="3"
+				name="{&quot;ko&quot;:&quot;업무방 검토 요청시 알림&quot;,&quot;en&quot;:&quot;업무방 검토 요청시 알림&quot;,&quot;zh&quot;:&quot;업무방 검토 요청시 알림&quot;,&quot;ja&quot;:&quot;업무방 검토 요청시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방의 검토 요청이 있습니다.","en":"업무방의 검토 요청이 있습니다.","zh":"업무방의 검토 요청이 있습니다.","ja":"업무방의 검토 요청이 있습니다."}</title>
+				<url>F:/work/prcs.read.jsp?prcsId=${item.id}&amp;id=${item.item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=prcs.read.jsp?prcsId=${item.id}&amp;id=${item.item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="requestApprovalNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 승인 요청시 알림&quot;,&quot;en&quot;:&quot;업무방 승인 요청시 알림&quot;,&quot;zh&quot;:&quot;업무방 승인 요청시 알림&quot;,&quot;ja&quot;:&quot;업무방 승인 요청시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방의 승인 요청이 있습니다.","en":"업무방의 승인 요청이 있습니다.","zh":"업무방의 승인 요청이 있습니다.","ja":"업무방의 승인 요청이 있습니다."}</title>
+				<url>F:/work/prcs.read.jsp?prcsId=${item.id}&amp;id=${item.item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=prcs.read.jsp?prcsId=${item.id}&amp;id=${item.item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="completeReviewNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 검토 완료시 알림&quot;,&quot;en&quot;:&quot;업무방 검토 완료시 알림&quot;,&quot;zh&quot;:&quot;업무방 검토 완료시 알림&quot;,&quot;ja&quot;:&quot;업무방 검토 완료시 알림&quot;}"
+				checked="true" >
+				<title> {"ko":"업무방의 내용이 검토가 완료되었습니다.","en":"업무방의 내용이 검토가 완료되었습니다.","zh":"업무방의 내용이 검토가 완료되었습니다.","ja":"업무방의 내용이 검토가 완료되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="completeApprovalNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 승인 완료시 알림&quot;,&quot;en&quot;:&quot;업무방 승인시 알림&quot;,&quot;zh&quot;:&quot;업무방 승인시 알림&quot;,&quot;ja&quot;:&quot;업무방 승인시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방의 내용이 승인되었습니다.","en":"업무방의 내용이 승인되었습니다.","zh":"업무방의 내용이 승인되었습니다.","ja":"업무방의 내용이 승인되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="needMoreReqNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 보완 요청시 알림&quot;,&quot;en&quot;:&quot;업무방 보완 요청시 알림&quot;,&quot;zh&quot;:&quot;업무방 보완 요청시 알림&quot;,&quot;ja&quot;:&quot;업무방 보완 요청시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방의 내용에 대한 보완 요청이 있습니다.","en":"업무방의 내용에 대한 보완 요청이 있습니다.","zh":"업무방의 내용에 대한 보완 요청이 있습니다.","ja":"업무방의 내용에 대한 보완 요청이 있습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="needMeetingReqNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 대면 요청시 알림&quot;,&quot;en&quot;:&quot;업무방 대면 요청시 알림&quot;,&quot;zh&quot;:&quot;업무방 대면 요청시 알림&quot;,&quot;ja&quot;:&quot;업무방 대면 요청시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방의 내용에 대한 대면 요청이 있습니다.","en":"업무방의 내용에 대한 대면 요청이 있습니다.","zh":"업무방의 내용에 대한 대면 요청이 있습니다.","ja":"업무방의 내용에 대한 대면 요청이 있습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="retrievedApprReqNew"
+				important="true"
+				updateStr="2" 
+				name="{&quot;ko&quot;:&quot;업무방 승인 요청 후 회수시 알림&quot;,&quot;en&quot;:&quot;업무방 승인 요청 후 회수시 알림&quot;,&quot;zh&quot;:&quot;업무방 승인 요청 후 회수시 알림&quot;,&quot;ja&quot;:&quot;업무방 승인 요청 후 회수시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방 승인 요청 중에 회수되었습니다.","en":"업무방 승인 요청 중에 회수되었습니다.","zh":"업무방 승인 요청 중에 회수되었습니다.","ja":"업무방 승인 요청 중에 회수되었습니다."}</title>
+				<url>F:/work/prcs.read.jsp?prcsId=${item.id}&amp;id=${item.item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl></originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="retrievedReviewReqNew"
+			 	important="true"
+				updateStr="2" 
+				name="{&quot;ko&quot;:&quot;업무방 검토 요청 후 회수시 알림&quot;,&quot;en&quot;:&quot;업무방 검토 요청 후 회수시 알림&quot;,&quot;zh&quot;:&quot;업무방 검토 요청 후 회수시 알림&quot;,&quot;ja&quot;:&quot;업무방 검토 요청 후 회수시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방 검토 요청 중에 회수되었습니다.","en":"업무방 검토 요청 중에 회수되었습니다.","zh":"업무방 검토 요청 중에 회수되었습니다.","ja":"업무방 검토 요청 중에 회수되었습니다."}</title>
+				<url>F:/work/prcs.read.jsp?prcsId=${item.id}&amp;id=${item.item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl></originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="changedInchargerNew"
+				important="true"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 담당자 변경시, 변경된 담당자에게 알림&quot;,&quot;en&quot;:&quot;업무방 담당자 변경시, 변경된 담당자에게 알림&quot;,&quot;zh&quot;:&quot;업무방 담당자 변경시, 변경된 담당자에게 알림&quot;,&quot;ja&quot;:&quot;업무방 담당자 변경시, 변경된 담당자에게 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"해당 업무방 담당자로 지정되었습니다.","en":"해당 업무방 담당자로 지정되었습니다.","zh":"해당 업무방 담당자로 지정되었습니다.","ja":"해당 업무방 담당자로 지정되었습니다."}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="registerWorkChatNew"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;업무방 채팅 입력시 알림&quot;}" 
+				checked="true" >
+				<title> {"ko":"업무방에 신규 대화가 등록되었습니다."}</title>
+				<url>B:/work/usr.main.jsp?rightUrl=/work/usr.read.jsp%3Fid=${item.id}</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="opnNew"
+				updateStr="3" 
+				name="{&quot;ko&quot;:&quot;의견 등록시 알림&quot;,&quot;en&quot;:&quot;Notify me upon new comments&quot;,&quot;zh&quot;:&quot;发表意见时提醒&quot;,&quot;ja&quot;:&quot;コメントが登録された時&quot;}" 
+				checked="true" >
+				<title> {"ko":"내 글에 의견이 등록되었습니다.","en":"내 글에 의견이 등록되었습니다.","zh":"내 글에 의견이 등록되었습니다.","ja":"私のエントリーにコメントが登録されました。"}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="replyOpnNew" 
+				updateStr="3"
+				name="{&quot;ko&quot;:&quot;의견에  덧글 등록시 알림&quot;,&quot;en&quot;:&quot;Notify me upon new comment replies&quot;,&quot;zh&quot;:&quot;意见有跟帖时提醒&quot;,&quot;ja&quot;:&quot;コメントに返信が登録された時&quot;}"
+				checked="true" >
+				<title> {"ko":"내 의견에 덧글이 등록되었습니다.","en":"내 의견에 덧글이 등록되었습니다.","zh":"내 의견에 덧글이 등록되었습니다.","ja":"私のコメントに返信されました。"}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="sympathyNew" 
+				updateStr="3"
+				name="{&quot;ko&quot;:&quot;공감 등록시 알림&quot;,&quot;en&quot;:&quot;공감 등록시 알림&quot;,&quot;zh&quot;:&quot;공감 등록시 알림&quot;,&quot;ja&quot;:&quot;共感を登録する時&quot;}" 
+				checked="true" >
+				<title>{"ko":"업무방에 공감이 등록되었습니다.","en":"업무방에 공감이 등록되었습니다.","zh":"업무방에 공감이 등록되었습니다.","ja":"私のエントリーに共感が登録されました。"}</title>
+				<url>F:/work/usr.read.jsp?id=${item.id}&amp;isAlimiRead=true</url>
+				<menuUrl>B:/work/usr.main.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/work/usr.main.jsp?rightUrl=usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+		</alimi><config proxy="com.kcube.work.WorkConfig" >
+			<entry key="opinion" name="하단의견사용여부(공감포함)" editLevel="admin" component="BooleanFieldEditor" value="true" />
+			<entry key="sympathy" name="공감사용여부" editLevel="user" component="BooleanFieldEditor" value="true" />
+			<entry key="sympathyIcons" name="공감아이콘선택" editLevel="user" component="SympathyIconSelectEditor" value="0" />
+			<entry key="readCntPopup" name="조회수에 조회자 팝업 사용 여부" editLevel="admin" component="BooleanFieldEditor" value="true" />
+			<entry key="workChatUse" name="업무방 실시간 사용여부" editLevel="admin" component="BooleanFieldEditor" value="false" />
+			<entry key="workReportNotSupportedExt" name="보고서 템플릿 등록 제한 or /허용/ 하는 확장자 &lt;br&gt;ex) 1. doc,xls - doc,xls 를 제한&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;2. /doc,xls/  - doc,xls만 허용." editLevel="admin" component="TextFieldEditor" value="exe"/>
+			<entry key="workFileSize" name="업무방 파일 크기(MB)" editLevel="admin" component="TextFieldEditor" value="-1" />
+			<entry key="workTotalSize" name="업무방 당 저장할 수 있는 총 파일 크기(MB)" editLevel="admin" component="TextFieldEditor" value="-1" />
+			<entry key="workChatFileSize" name="업무방 대화 파일별 최대크기(MB)" editLevel="admin" component="TextFieldEditor" value="-1" />
+			<entry key="readMapSecure" name="{&quot;ko&quot;:&quot;읽기 맵 보안설정 여부&quot;,&quot;en&quot;:&quot;Set read map security&quot;,&quot;zh&quot;:&quot;是否设置只读映射加密&quot;,&quot;ja&quot;:&quot;マップ閲覧セキュリティー設定有無&quot;}" editLevel="admin" component="BooleanFieldEditor" value="false" />
+			<entry key="workPortletKmId" name="업무방 포틀릿 전부서 탭 kmId" editLevel="user" component="TextFieldEditor" value="0" />
+			<entry key="ganttchart" name="간트차트 사용 여부" editLevel="user" component="BooleanFieldEditor" value="true" />
+			<entry key="planPeriod" name="수행계획 기본 기간(일)" editLevel="user" component="TextFieldEditor" value="7" />
+		</config>
+		<mileage>
+			<entry key="1031.0" name="업무방조회[조회자]" />
+			<entry key="1031.20" name="업무방조회[작성자]" />
+			<entry key="1039.20" name="업무방 등록[작성자]" />
+			<entry key="1110.0" name="업무방 보고서 등록[등록자]" />
+			<entry key="1111.0" name="업무방 보고서 버전업[등록자]" />
+			<entry key="1112.0" name="업무방 보고서 삭제[삭제자]" />
+			<entry key="1113.0" name="업무방 보고서 다운로드[조회자]" />
+			<entry key="1114.0" name="업무방 첨부파일 등록[등록자]" />
+			<entry key="1115.0" name="업무방 첨부파일 버전업[등록자]" />
+			<entry key="1116.0" name="업무방 첨부파일 삭제[삭제자]" />
+			<entry key="1117.0" name="업무방 첨부파일 다운로드[조회자]" />
+			<entry key="1118.0" name="업무방 참고자료 추가[등록자]" />
+			<entry key="1119.0" name="업무방 참고자료 삭제[삭제자]" />
+			<entry key="1120.0" name="업무방 참고자료 다운로드[조회자]" />
+			<entry key="1210.0" name="업무방 공유요청[요청자]" />
+			<entry key="1211.0" name="업무방 공유요청 승인[승인자]" />
+			<entry key="1212.0" name="업무방 공유요청 반려[반려자]" />
+			<entry key="1500.0" name="업무방 우측 의견 등록[추가자]" />
+			<entry key="1600.0" name="업무방 수행계획 등록[추가자]" />
+			<entry key="1610.0" name="업무방 수행계획 삭제[삭제자]" />
+		</mileage>
+	</tabs>
+</configuration>

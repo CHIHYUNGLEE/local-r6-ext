@@ -1,0 +1,8 @@
+개발 domain   : https://dev-api.kcubeon.com/
+개발 key         : eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRpZCI6IjEwMDAifQ.ZBLMrsU0y8bsKsNLM76hSDZZ-1SnLC9TFMMtCluqoQs
+사용자 url    : https://dev-api.kcubeon.com/api/v1/user/info/list?onlyVisible=false&timeZone=Asia%2FSeoul&useConcurrent=false
+
+운영 domain : https://api.kcubeon.com/api/
+운영 key       : eyJhbGciOiJIUzI1NiJ9.eyJ0ZW5hbnRpZCI6IjEwMDAifQ.ZBLMrsU0y8bsKsNLM76hSDZZ-1SnLC9TFMMtCluqoQs
+사용자 url    : https://api.kcubeon.com/api/v1/user/info/list?onlyVisible=false&timeZone=Asia%2FSeoul&useConcurrent=false
+--

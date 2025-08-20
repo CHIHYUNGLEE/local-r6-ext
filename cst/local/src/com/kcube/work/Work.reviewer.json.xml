@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<mapping name="reviewer" class="com.kcube.work.Work">
+	<bean class="com.kcube.work.Work">
+		<value name="id" />
+		<value name="rgstDate" />
+		<value name="lastUpdt" />
+		<value name="status" />
+		<value name="title" />
+		<value name="author" />
+		<value name="folder" method="jsonFolder" source="com.kcube.doc.Item$Folder$Json" />
+		<value name="actor" />
+		<value name="readCnt" method="transientCnt" />
+		<value name="opnCnt" />
+		<value name="planCnt" />
+		<value name="completeDate" />
+		<value name="trnsSrc" />
+		<value name="trnsKey" />
+		<value name="fileExt" />
+		<value name="scrtLevel" />
+		<value name="comm" />
+		<value name="content" />
+		<value name="chargeDprtName" />
+		<value name="chargeDprtId" />
+		<value name="currentOwner" />
+		<value name="exprMonth" />
+		<value name="exprDate" />
+		<value name="classId" />
+		<value name="menuId" />
+		<value name="appId" />
+		<value name="moduleId" />
+		<value name="tenantId" />
+		<value name="spaceId" />
+		<value name="isShare" />
+		<value name="isHelper" />
+		<value name="itemsVisible" />
+		<value name="fvrt" />
+		<value name="workProcess" source="com.kcube.work.process.WorkProcess" />
+		<value name="securities" source="com.kcube.doc.Item$Security" />
+		<value name="sympathyCnt" />
+		<value name="sympathies" method="jsonSympathies" source="com.kcube.doc.symp.Sympathy" />
+		<value name="tags" source="com.kcube.doc.Item$Tag" />
+		<value name="helpers" source="com.kcube.sys.usr.User" />
+		<value name="sharers" source="com.kcube.sys.usr.User" />
+		<value name="attachments" method="workAttachments" source="com.kcube.work.Work$WorkAttachment" />
+		<value name="reportFiles" source="com.kcube.work.Work$ReportFile" />
+		<value name="editorFiles" method="attachments" source="com.kcube.work.Work$EditorAttachment" />
+		<value name="workReferences" source="com.kcube.work.WorkReference" />
+		<value name="opinions" method="jsonOpinions" source="com.kcube.work.Work$Opinion" />
+		<value name="apprReviewSetting" method="apprReviewSetting" />
+	</bean>
+	<bean class="com.kcube.work.Work$ApprReviewSetting">
+		<value name="reviewers" source="com.kcube.sys.usr.User" />
+		<value name="approver"/>
+		<value name="reportSketch"/>
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+	<bean class="com.kcube.doc.Item$Security">
+		<value name="xid" method="xidString" />
+		<value name="title" />
+		<value name="computed" />
+	</bean>
+	<bean class="com.kcube.doc.Item$Tag">
+		<value name="tag" />
+		<value name="itemDate" />
+		<value name="visible" />
+	</bean>
+	<bean class="com.kcube.work.Work$WorkAttachment">
+		<value name="id" />
+		<value name="size" method="filesize" />
+		<value name="filename" />
+		<value name="path" />
+		<value name="type" />
+		<value name="method" />
+		<value name="checker" />
+		<value name="checkOut" />
+		<value name="rgst" />
+		<value name="gid" />
+		<value name="lastVersion" />
+		<value name="vrsn" />
+		<value name="rgstDate" />
+		<value name="currentUser" />
+	</bean>
+	<bean class="com.kcube.work.Work$ReportFile">
+		<value name="id" />
+		<value name="size" method="filesize" />
+		<value name="filename" />
+		<value name="path" />
+		<value name="type" />
+		<value name="method" />
+		<value name="checker" />
+		<value name="checkOut" />
+		<value name="rgst" />
+		<value name="gid" />
+		<value name="lastVersion" />
+		<value name="vrsn" />
+		<value name="rgstDate" />
+		<value name="currentUser" />
+		<value name="tmpSavePath" />
+	</bean>
+	<bean class="com.kcube.work.Work$EditorAttachment">
+		<value name="id" />
+		<value name="size" method="filesize" />
+		<value name="filename" />
+		<value name="path" />
+		<value name="type" />
+		<value name="method" />
+	</bean>
+	<bean class="com.kcube.work.WorkReference">
+		<value name="id" />
+		<value name="size" method="filesize" />
+		<value name="filename" />
+		<value name="path" />
+		<value name="type" />
+		<value name="method" />
+		<value name="name" method="title"/>
+		<value name="rgstUserId" />
+		<value name="order" />
+		<value name="rfrnCode" />
+		<value name="rfrnQuery" method ="query"/>
+	</bean>
+	<bean class="com.kcube.work.Work$Opinion">
+		<value name="id" />
+		<value name="itemId" />
+		<value name="gid" />
+		<value name="content" />
+		<value name="user" method="rgstUser" />
+		<value name="rgstDate" />
+		<value name="currentOwner" />
+	</bean>
+	<bean class="com.kcube.work.process.WorkProcess">
+		<value name="id" />
+		<value name="reqDate" />
+		<value name="cmpltDate" />
+		<value name="gid" />
+		<value name="status" />
+		<value name="processType" />
+		<value name="title" />
+		<value name="inChage" />
+		<value name="checker" />
+		<value name="title" />
+		<value name="resContent" />
+		<value name="content" />
+		<value name="retrieve" />
+		<value name="read" />
+	</bean>
+	<!-- necessarily -->
+	<bean class="com.kcube.doc.Item$Folder$Json">
+		<value name="id" />
+		<value name="rootId" />
+		<value name="computed" />
+		<value name="path" />
+	</bean>
+	<bean class="com.kcube.doc.opn.OpinionJson">
+		<value name="total" />
+		<value name="rest" />
+		<value name="array" />
+	</bean>
+		<bean class="com.kcube.doc.symp.Sympathy">
+		<value name="userId" />
+		<value name="name" />
+		<value name="displayName" />
+		<value name="sympType" />
+		<value name="instDate" />
+	</bean>
+	<bean class="com.kcube.doc.symp.SympathyJson">
+		<value name="total" />
+		<value name="rest" />
+		<value name="selfSymp" />
+		<value name="array" />
+	</bean>
+</mapping>

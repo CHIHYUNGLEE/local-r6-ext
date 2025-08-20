@@ -1,0 +1,55 @@
+create table temp_user (
+	realuid number(8, 0) primary key,
+    id number(8, 0),
+    gid number(8, 0),
+    SABUN   varchar2(32),
+    NAME    varchar2(1000),
+    FIRST_NAME  varchar2(500),
+    LAST_NAME   varchar2(500),
+    DISP_NAME   varchar2(1000),
+    LOGIN_ID    varchar2(255),
+    EMAIL   varchar2(255),
+    EMAIL_SUB   varchar2(255),
+    ISVISB number(1, 0),
+    STATUS  number(4, 0),
+    LOCALE  varchar2(32),
+    DEPTID  number(8,0),
+    DEPT_NAME   varchar2(1000),
+    GRADEID number(8,0),
+    GRADE_NAME  varchar2(1000),
+    GRADE_SORT  number(8,0),
+    PSTNID  number(8,0),
+    PSTN_NAME   varchar2(1000),
+    PSTN_SORT   number(8,0),
+    BOSSID number(8,0),
+    BOSS_NAME   varchar2(1000),
+    BOSS_DISP   varchar2(1000),
+    JOB_TITLE   varchar2(1000),
+    OFCE_PHN    varchar2(128),
+    OFCE_ADRS   varchar2(255),
+    OFCE_FAX    varchar2(255),
+    MBL_PHN varchar2(128),
+    HOME_PHN    varchar2(128),
+    LAST_UPDT   date,
+    THUMB_LAST_UPDT date,
+    BIRTH_DATE  date,
+    ISLUNARBIRTH    number(1,0) default 0 not null,
+    ISLEAPBIRTH number(1,0) default 0 not null,
+    TENANTID    number(4,0)
+);
+
+create table temp_km (
+	realkid number(8, 0) primary key,
+    id number(8, 0),
+    pid number(8, 0),
+    name varchar2(1000),
+    sort number(8, 0),
+    isvisb number(1, 0),
+    last_updt date,
+    tenantid number(4, 0),
+    trns_src varchar2(32 byte),
+    rootid number(8, 0)
+);
+
+CREATE SEQUENCE SQ_TEMP_USER INCREMENT BY 1 START WITH 1;
+CREATE SEQUENCE SQ_TEMP_KM INCREMENT BY 1 START WITH 1;

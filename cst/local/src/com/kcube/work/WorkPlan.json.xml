@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<mapping class="com.kcube.work.plan.WorkPlan">
+	<bean class="com.kcube.work.plan.WorkPlan">
+		<value name="id" />
+		<value name="workId" />
+		<value name="gid" />
+		<value name="pid" />
+		<value name="pos" />
+		<value name="step" />
+		<value name="title" />
+		<value name="startDate" />
+		<value name="endDate" />
+		<value name="minStartDate" />
+		<value name="maxStartDate" />
+		<value name="minEndDate" />
+		<value name="maxEndDate" />
+		<value name="completeDate" />
+		<value name="tenantId" />
+		<value name="status" />
+		<value name="content" />
+		<value name="fileExt" />
+		<value name="rgstDate" />
+		<value name="lastUpdt" />
+		<value name="author" />
+		<value name="isPlanActor" method="planActor" />
+		<value name="planActors" source="com.kcube.sys.usr.User"/>
+		<value name="classId" />
+		<value name="appId" />
+		<value name="moduleId" />
+		<value name="spaceId" />
+		<value name="attachments" source="com.kcube.work.plan.WorkPlan$Attachment" />
+		
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+	<bean class="com.kcube.work.plan.WorkPlan$Attachment">
+		<value name="id" />
+		<value name="filename" />
+		<value name="path" />
+		<value name="type" />
+		<value name="method" />
+		<value name="size" method="filesize" />
+	</bean>
+</mapping>

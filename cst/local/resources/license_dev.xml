@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<bean id="license" class="com.kcube.sys.license.License" factory-method="getLicense">
+		<property name="companies">
+			<list>
+				<bean class="com.kcube.sys.license.License$Company">
+			        <property name="name">
+						<value>KCUBE</value>
+					</property>
+			        <property name="tenant">
+						<value>1000</value>
+					</property>
+					<property name="maxUsers">
+						<value>unlimited</value>
+					</property>
+			    </bean>
+			</list>
+		</property>
+		<property name="expire"><value>2025-12-31</value></property>
+		<property name="systemMap">
+			<map>
+				<entry key="ekp" value="EKP License"></entry>
+			</map>
+		</property>
+		<property name="hosts">
+			<list>
+				<value>unlimited</value>
+			</list>
+		</property>
+		<property name="manage"><value>false</value></property>		
+		<property name="sign"><value>302C0214042BB503549DCCF6093FE66E44774E065105D46402145F93C49C1879097A563847598238B4B5606E94A7</value></property>		
+	</bean>
+</beans>	

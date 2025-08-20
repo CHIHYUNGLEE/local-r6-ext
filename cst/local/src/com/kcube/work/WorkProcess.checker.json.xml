@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<mapping name="checklist" class="com.kcube.work.process.WorkProcess">
+	<bean class="com.kcube.work.process.WorkProcess">
+		<value name="id" />
+		<value name="reqDate" />
+		<value name="cmpltDate" />
+		<value name="gid" />
+		<value name="status" />
+		<value name="processType" />
+		<value name="title" />
+		<value name="inChage" />
+		<value name="checker" />
+		<value name="title" />
+		<value name="resContent" />
+		<value name="content" />
+		<value name="retrieve" />
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+</mapping>

@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="local-r6-ext" default="build">
+	<property environment="env" />
+	<property name="project" value="local-r6-ext" />
+	<!-- Release 날짜 : 2022.06.30 -->
+	<property name="r6_version" value="1.9" />
+	<property name="deployWar" value="r6-${r6_version}" />
+
+	<!-- 설치위치 -->
+	<property name="dst-app" value="./output" />
+	<property name="web" value="cst/local/web" />
+	<property name="src" value="cst/local/src" />
+	<property name="resource" value="cst/local/resources" />
+	<property name="bin" value="target/classes" />
+	<property name="dst-war" value="./target" />
+	<property name="app-base" value="${dst-war}/appbase" />
+	<property name="yuicompressor-jar" value="./lib-mvn/yuicompressor-2.4.7.jar" description="YUI Compressor" />
+	<property name="patch" value="cst/local/patch" />
+	<!-- compiler 위치 : 프로젝트 우클릭 후 -> build path -> output 폴더를 지정해야 함 -->
+	<property name="compilerPath" value="javac" />
+
+	<!-- ant 설정 -->
+	<taskdef resource="net/sf/antcontrib/antlib.xml">
+		<classpath>
+			<pathelement location="lib-mvn/antcontrib-1.6.jar" />
+		</classpath>
+	</taskdef>
+
+	<!--  full-build -->
+	<target name="full-build" depends="deploy,build">
+		<echo message="full-build end" />
+	</target>
+	
+	<!--  full-build -->
+	<target name="full-build-local" depends="deploy,build-local">
+		<echo message="full-build-local end" />
+	</target>
+
+	<target name="clean">
+		<delete includeEmptyDirs="true" quiet="true">
+			<fileset dir="${dst-app}" includes="**/*">
+			</fileset>
+		</delete>
+	</target>
+
+	<!--r6를 설치한다.-->
+	<target name="deploy" depends="clean,deploy-r6,cstm-app-dep,delete-unuse">
+	</target>
+
+	<!--미사용모듈 정리-->
+	<target name="delete-unuse">
+		<!--<delete dir="${dst-app}/ecm" />
+		<delete dir="${dst-app}/group/gcop/" />
+		<delete dir="${dst-app}/talks" />
+		<delete dir="${dst-app}/mobile/" />
+		<delete dir="${dst-app}/todo" />
+		<delete dir="${dst-app}" includes="flash_external_object*.*" />
+		<delete dir="${dst-app}" includes="*.ja.*" />
+		<delete dir="${dst-app}" includes="*.zh.*" />-->
+	</target>
+
+	<!-- r6 core를  deploy한다. -->
+	<target name="deploy-r6">
+		<unjar dest="${dst-app}" src="war/${deployWar}.war" />
+	</target>
+
+	<!--app을  설치한다. -->
+	<target name="cstm-app-dep">
+		<foreach target="cstm-extr-app" param="warFile">
+			<path>
+				<fileset dir="war/app">
+					<include name="*.war" />
+					<exclude name="${deployWar}.war" />
+				</fileset>
+			</path>
+		</foreach>
+	</target>
+
+	<!-- 개별 app을  설치한다. -->
+	<target name="cstm-extr-app">
+		<propertyregex property="name" input="${warFile}" regexp="([^\\|^/]*)\.[war|WAR]" select="\1" />
+		<delete dir="${app-base}/temp/${name}" />
+		<unjar src="${warFile}" dest="${app-base}/temp/${name}" />
+		<copy todir="${dst-app}" includeEmptyDirs="no">
+			<fileset dir="${app-base}/temp/${name}/web" />
+		</copy>
+		<copy todir="${dst-app}/WEB-INF/lib" includeEmptyDirs="no">
+			<fileset dir="${app-base}/temp/${name}/lib">
+				<include name="*.jar" />
+			</fileset>
+		</copy>
+		<copy todir="${dst-app}/WEB-INF/classes/r6-app/basic">
+			<fileset dir="${app-base}/temp/${name}/conf">
+				<include name="*.conf.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- build를 수행한다. -->
+	<target name="build" depends="web,src" />
+
+	<!-- build-local -->
+	<target name="build-local" depends="compile,web-local,src-local" />
+
+	<!-- web -->
+	<target name="web">
+		<copy todir="${dst-app}" includeEmptyDirs="yes" overwrite="true" verbose="true">
+			<fileset dir="${web}">
+				<exclude name="/cst/**" />
+			</fileset>
+		</copy>
+		<if>
+			<available file="${web}/cst" type="dir" />
+			<then>
+				<copy todir="${dst-app}/cst" includeEmptyDirs="yes" overwrite="true" verbose="true">
+					<fileset dir="${web}/cst" />
+				</copy>
+			</then>
+		</if>
+	</target>
+	
+	<target name="web-local">
+		<copy todir="${dst-app}" includeEmptyDirs="yes" overwrite="true" verbose="true">
+			<fileset dir="${web}">
+				<exclude name="cst/**" />
+				<exclude name="WEB-INF/**" />
+			</fileset>
+		</copy>
+		<if>
+			<available file="${web}/cst" type="dir" />
+			<then>
+				<copy todir="${dst-app}/cst" includeEmptyDirs="yes" overwrite="true" verbose="true">
+					<fileset dir="${web}/cst" >
+						</fileset>
+				</copy>
+			</then>
+		</if>
+	</target>
+
+	<target name="lang-ext">
+		<tstamp>
+			<format property="timestamp" pattern="yyMMddHHmmssS" />
+		</tstamp>
+		<replaceregexp match="LANG_VERSION = '[0-9]*'" replace="LANG_VERSION = '${timestamp}'" flags="g" encoding="UTF-8">
+			<fileset dir="${web}" includes="script.language.ver.ext.js" />
+		</replaceregexp>
+		<copy overwrite="true" verbose="true" file="${web}/script.language.ver.ext.js" tofile="${dst-app}/script.language.ver.ext.js" />
+	</target>
+
+	<!-- src를 복사한다. -->
+	<target name="src" depends="cstm-conf,lib,license-dev">
+		<!--개별로 돌리는 경우에만 성공 : Maven에서 다시 돌려주기 때문에 Maven에서는 무시해도 됨 -->
+		<trycatch>
+			<try>
+				<native2ascii dest="${dst-app}/WEB-INF/classes/" ext=".properties" encoding="UTF-8" src="${src}" includes="**/*.properties" />
+				<native2ascii dest="${dst-app}/WEB-INF/classes/" ext=".properties" encoding="UTF-8" src="${resource}" includes="**/*.properties" />
+				<echo>[${ant.project.name}] native2ascii success</echo>
+			</try>
+			<catch>
+				<echo>[${ant.project.name}] native2ascii error</echo>
+			</catch>
+		</trycatch>
+		<copy todir="${dst-app}/WEB-INF/classes" overwrite="true" verbose="true">
+			<fileset dir="${bin}">
+				<include name="**/*.class" />
+			</fileset>
+			<fileset dir="${src}">
+				<include name="**/*.xls" />
+				<include name="**/*.xml" />
+				<exclude name="*.properties" />
+			</fileset>
+		</copy>
+		<copy todir="${dst-app}/WEB-INF/classes" overwrite="true" verbose="true">
+			<fileset dir="${resource}">
+				<include name="**/*.xml" />
+				<exclude name="*.properties" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<!-- src를 복사한다(로컬용). -->
+	<target name="src-local" depends="cstm-conf,lib">
+		<!--개별로 돌리는 경우에만 성공 : Maven에서 다시 돌려주기 때문에 Maven에서는 무시해도 됨 -->
+		<trycatch>
+			<try>
+				<native2ascii dest="${dst-app}/WEB-INF/classes/" ext=".properties" encoding="UTF-8" src="${src}" includes="**/*.properties" />
+				<native2ascii dest="${dst-app}/WEB-INF/classes/" ext=".properties" encoding="UTF-8" src="${resource}" includes="**/*.properties" />
+				<echo>[${ant.project.name}] native2ascii success</echo>
+			</try>
+			<catch>
+				<echo>[${ant.project.name}] native2ascii error</echo>
+			</catch>
+		</trycatch>
+		<copy todir="${dst-app}/WEB-INF/classes" overwrite="true" verbose="true">
+			<fileset dir="${bin}">
+				<include name="**/*.class" />
+			</fileset>
+			<fileset dir="${src}">
+				<include name="**/*.xls" />
+				<include name="**/*.xml" />
+				<exclude name="*.properties" />
+			</fileset>
+		</copy>
+		<copy todir="${dst-app}/WEB-INF/classes" overwrite="true" verbose="true">
+			<fileset dir="${resource}">
+				<include name="**/*.xml" />
+				<exclude name="*.properties" />
+			</fileset>
+		</copy>
+		<copy file="${resource}/license_dev.xml" tofile="${dst-app}/WEB-INF/classes/license.xml" overwrite="true" verbose="true" />
+	</target>
+	
+
+	<!-- 커스터마이징한 conf.xml 파일을 복사한다. App의 기본 conf.xml 수정 금지 -->
+	<target name="cstm-conf">
+		<copy todir="${dst-app}/WEB-INF/classes/r6-app/customize" overwrite="true" verbose="true">
+			<fileset dir="cst/local/conf/">
+				<include name="**/*.conf.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- lib를 복사한다. -->
+	<target name="lib">
+		<copy todir="${dst-app}/WEB-INF/lib" overwrite="true" verbose="true">
+			<fileset dir="./lib" includes="*.jar">
+				<exclude name="r6*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- js 파일을 통합한후 압축파일을 생성한다. -->
+	<target name="ext-js" depends="ext-css">
+		<concat destfile="${web}/script-ext.js" encoding="UTF-8">
+			<fileset dir="${web}/cst/js">
+				<include name="**/*.js" />
+			</fileset>
+		</concat>
+		<if>
+			<available file="${web}/script-ext.js" type="file" />
+			<then>
+				<apply executable="java" parallel="false" dest="${web}">
+					<fileset dir="${web}">
+						<include name="script-ext.js" />
+					</fileset>
+					<arg line="-jar" />
+					<arg path="${yuicompressor-jar}" />
+					<arg line="--charset utf-8" />
+					<arg line="-o" />
+					<targetfile />
+					<mapper type="glob" from="script-ext.js" to="script-ext_min.js" />
+				</apply>
+				<copy file="${web}/script-ext.js" todir="${dst-app}" overwrite="true" verbose="true" />
+				<copy file="${web}/script-ext_min.js" todir="${dst-app}" overwrite="true" verbose="true" />
+			</then>
+		</if>
+	</target>
+
+	<!-- css 파일을 통합한후 압축파일을 생성한다. -->
+	<target name="ext-css">
+		<concat destfile="${web}/component-ext.css" encoding="UTF-8">
+			<fileset dir="${web}/cst/js">
+				<include name="**/*.css" />
+			</fileset>
+		</concat>
+		<if>
+			<available file="${web}/component-ext.css" type="file" />
+			<then>
+				<apply executable="java" parallel="false" dest="${web}">
+					<fileset dir="${web}">
+						<include name="component-ext.css" />
+					</fileset>
+					<arg line="-jar" />
+					<arg path="${yuicompressor-jar}" />
+					<arg line="--charset utf-8" />
+					<arg line="-o" />
+					<targetfile />
+					<mapper type="glob" from="component-ext.css" to="component-ext_min.css" />
+				</apply>
+				<copy file="${web}/component-ext.css" todir="${dst-app}" overwrite="true" verbose="true" />
+				<copy file="${web}/component-ext_min.css" todir="${dst-app}" overwrite="true" verbose="true" />
+			</then>
+		</if>
+	</target>
+
+	<!-- 개발 라이센스 적용 -->
+	<target name="license-dev">
+		<copy file="${resource}/license_dev.xml" tofile="${dst-app}/WEB-INF/classes/license.xml" overwrite="true" verbose="true" />
+	</target>
+	
+	<!-- 운영 라이센스 적용 -->
+	<target name="license-prod">
+		<copy file="${resource}/license.xml" tofile="${dst-app}/WEB-INF/classes/license.xml" overwrite="true" verbose="true" />
+	</target>
+
+	<!-- Patch용 war 생성 : clean, deploy 생략 -->
+	<target name="war-only">
+		<tstamp />
+		<jar destfile="${dst-war}/${ant.project.name}_${DSTAMP}-${TSTAMP}.war" basedir="${dst-app}" update="false" />
+	</target>
+
+	<!-- Patch용 war 생성 -->
+	<target name="war" depends="clean,deploy,build">
+		<tstamp />
+		<jar destfile="${dst-war}/${ant.project.name}_${DSTAMP}-${TSTAMP}.war" basedir="${dst-app}" update="false" />
+	</target>
+
+	<!-- 개발 Patch용 war 생성 -->
+	<target name="war_dev" depends="clean,deploy,build,license-dev">
+		<tstamp />
+		<jar destfile="${dst-war}/${ant.project.name}_${DSTAMP}-${TSTAMP}.war" basedir="${dst-app}" update="false" />
+	</target>
+	
+	<!-- 운영 Patch용 war 생성 -->
+	<target name="war_prod" depends="clean,deploy,build,license-prod">
+		<tstamp />
+		<jar destfile="${dst-war}/${ant.project.name}_${DSTAMP}-${TSTAMP}.war" basedir="${dst-app}" update="false" />
+	</target>
+
+
+	<!--classpath-->
+	<path id="classpath">
+		<fileset dir="lib" includes="*.jar" />
+		<fileset dir="lib-mvn" includes="*.jar" />
+		<fileset dir="war/app" includes="*.war" />
+	</path>
+
+	<!-- complie -->
+	<target name="compile">
+		<mkdir dir="${bin}" />
+		<delete>
+			<fileset dir="${bin}" includes="**/*.*" />
+		</delete>
+		<javac destdir="${bin}" classpathref="classpath" includeantruntime="false" fork="yes" executable="${compilerPath}" compiler="javac1.8" encoding="UTF-8">
+			<src path="${src}" />
+			<src path="${patch}" />
+		</javac>
+	</target>
+</project>

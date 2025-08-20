@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration class="com.kcube.ekp.mbs.MbItem" version="2.0.6" name="admCtgr" category="1000">
+	<title>{"ko":"통합게시판","en":"MBS","zh":"综合公告板","ja":"統合掲示板","in":"MBS"}</title>
+	<description>
+		<ko><![CDATA[통합게시판 입니다.]]></ko>
+		<en><![CDATA[This is the MBS]]></en>
+		<ja><![CDATA[統合掲示板です。]]></ja>
+		<zh><![CDATA[是综合公告栏。]]></zh>
+		<in><![CDATA[Ini adalah MBS]]></in>
+	</description>
+	<developer>KCUBE</developer>
+	<indexUrl>/ekp/mbs/usr.index.jsp</indexUrl>
+	<manageUrl>/ekp/mbs/adm.index.jsp</manageUrl>
+	<myDocUrl>/ekp/mbs/own.list.jsp</myDocUrl>
+	<iconCode>7</iconCode>
+	<mobile>
+		<url>/apps/mbs/usr/list</url>
+	</mobile>
+	<rfrn>
+		<treeUrl>/ekp/mbs/rfrn.tree.jsp</treeUrl>
+		<listUrl>/ekp/mbs/rfrn.list.jsp</listUrl>
+		<readUrl>/ekp/mbs/rfrn.read.jsp</readUrl>
+	</rfrn>
+	<data>
+		<entry>
+			<name>{"ko":"최신글","en":"New Posts","zh":"最新帖","ja":"最新書き込み","in":"Postingan Baru"}</name>
+			<url>/jsl/MbItemPortlet.BldrDataByUser.json</url>
+			<dtype>0</dtype><!-- 0 : 목록형 데이터, 1 : 앨범형 데이터 -->
+		</entry>
+		<entry>
+			<name>{"ko":"최신글","en":"New Posts","zh":"最新帖","ja":"最新書き込み","in":"Postingan Baru"}</name>
+			<url>/jsl/MbItemPortlet.BldrDataByUser.json</url>
+			<dtype>1</dtype><!-- 0 : 목록형 데이터, 1 : 앨범형 데이터 -->
+		</entry>
+	</data>
+	<tabs>
+		<map useCtgrMap="true" ctgrMapReadOnly="true" writeSecure="true" readSecure="true" rplySecure="true" anonymous="true" settingUrl="/ekp/mbs/inapp/menu.tree.jsp"/>
+		<notify>
+			<entry key="answer" alimiKey="answerNew" updateStr="2" name="{&quot;ko&quot;:&quot;게시글 답변시(소유자)&quot;,&quot;en&quot;:&quot;When a reply is posted (Owner)&quot;,&quot;zh&quot;:&quot;回帖时(发帖人)&quot;,&quot;ja&quot;:&quot;書き込みに回答登録時(作成者)&quot;,&quot;in&quot;:&quot;Saat balasan diposting (Pemilik)&quot;}">
+				<value name="Mail" checked="true">
+					<title>{"ko":"답변이 등록 되었습니다.","en":"Your answer has been registered.","zh":"您的答案已被注册。","ja":"返答が登録されました。","in":"Jawaban Anda telah terdaftar."}</title>
+					<content>
+						<ko>
+						<![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">다음과 같은 답변이 등록 되었습니다.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">제목</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.title}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27"	style="background: #f1f4f7; text-align: center; color: #2c4e7d;">작성자</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+						</ko>
+						<en>
+						<![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>System notification</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">The following answers have been registered.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Portal name</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">App name</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Title</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.title}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27"	style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Writer</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+						</en>
+						<ja>
+						<![CDATA[<div id="message" style="font-size: 12px; font-family: 'MS PGothic';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>システム通知</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">下記のように返答が登録されました。</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: 'MS PGothic'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">ポータル名</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">アプリ名</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">タイトル</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.title}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27"	style="background: #f1f4f7; text-align: center; color: #2c4e7d;">作成者</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+						</ja>
+						<zh>
+						<![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>系统通知</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">已注册以下答案。</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">门户名称</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">应用名称</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">标题</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.title}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27"	style="background: #f1f4f7; text-align: center; color: #2c4e7d;">作家</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+						</zh>
+						<in>
+						<![CDATA[<div id="message" style="font-size: 12px; font-family: '돋움체';">
+<div id="title"	style="margin-bottom: 16px; padding: 3px 0px 6px 5px; border-bottom: 1px solid #c4cfdf; font-size: 14px; color: #252525;">
+<b>Pengumuman sistem</b>
+</div>
+<div id="note" style="margin-bottom: 10px; padding-left: 5px; color: #2c4e7d;">Jawaban berikut telah didaftarkan.</div>
+<div id="table" style="border-top: 2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size: 12px; font-family: '돋움체'; color: #646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Nama Portal</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Nama Aplikasi</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Judul</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.title}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27"	style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Penulis</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+						</in>
+					</content>
+				</value>
+			</entry>
+			<entry key="expireMaster" alimiKey="expireMaster" updateStr="2" name="{&quot;ko&quot;:&quot;기한 만료시 알림(분류 관리자)&quot;,&quot;en&quot;:&quot;Notification when the deadline expires (classification manager)&quot;,&quot;zh&quot;:&quot;截止日期到期时通知（分类经理）&quot;,&quot;ja&quot;:&quot;期限満了時に通知（分類管理者）&quot;,&quot;in&quot;:&quot;Pengumuman saat batas waktu berakhir (Pengelola klasifikasi)&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>{"ko":"글의 기한이 만료되었습니다.","en":"The deadline for the article has expired.","zh":"文章的截止日期已过期。","ja":"文の有効期限が切れました。","in":"Batas waktu artikel telah habis."}</title>
+					<content>
+					<ko>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+다음과 같은 글의 기한이 만료되었습니다.
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">포털명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">앱명</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">번호</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.id}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">제목</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.title}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">작성자</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</ko>
+					<en>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>System notification</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+The deadline for the following article has expired.
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Portal name</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">App name</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">No.</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.id}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Title</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.title}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Writer</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</en>
+					<ja>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'MS PGothic';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>システム通知</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+下一篇文章的截止日期已过期。
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'MS PGothic'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">ポータル名</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">アプリ名</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">番号</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.id}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">タイトル</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.title}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">作成者</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</ja>
+					<zh>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>系统通知</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+下一篇文章的截止日期已过期。
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">门户名称</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">应用名称</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">数字</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.id}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">标题</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.title}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">作家</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</zh>
+					<in>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>Pengumuman sistem</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+Batas waktu untuk artikel berikut telah berakhir.
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Nama Portal</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background: #f1f4f7; text-align: center; color: #2c4e7d;">Nama Aplikasi</td>
+<td	style="padding-left: 12px; color: #646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background: #d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Tidak.</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.id}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Judul</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.title}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Penulis</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${item.author.name}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</in>
+					</content>
+				</value>
+			</entry>
+			<entry key="beforeExpireMaster" alimiKey="beforeExpireMaster" updateStr="2" name="{&quot;ko&quot;:&quot;기한 만료 예정시 알림(분류 관리자)&quot;,&quot;en&quot;:&quot;Notification when the deadline is about to expire (classification manager)&quot;,&quot;zh&quot;:&quot;截止日期即将到期时的通知（分类管理员）&quot;,&quot;ja&quot;:&quot;期限満了予定時に通知（分類管理者）&quot;,&quot;in&quot;:&quot;Pengumuman ketika batas waktu akan segera berakhir (Pengelola klasifikasi)&quot;}">
+				<value name="Mail" checked="true" msgChecked="true">
+					<title>{"ko":"유효기간 만료일이 도래하고 있습니다.","en":"The expiration date is approaching.","zh":"到期日期临近。","ja":"有効期限が近づいています。","in":"Tanggal kedaluwarsa sudah dekat."}</title>
+					<content>
+					<ko>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>시스템알림</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+${item.user.name}님의 전문분야의  글이 유효기간 만료일이 도래하고 있습니다.<br>등록 글을 검토하여 지속적인 활용이 필요한 글의 경우 유효기간을 연장하여 주시기 바랍니다.
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">포털명</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">앱명</td>
+<td style="padding-left:12px; color:#646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">해당 건수</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.count}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</ko>
+					<en>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>System notification</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+The expiration date of ${item.user.name}'s specialty text is approaching.<br>Please review the registered article and extend the validity period for articles that require continuous use.
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Portal name</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">App name</td>
+<td style="padding-left:12px; color:#646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">The number of cases</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.count}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</en>
+					<ja>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'MS PGothic';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>システム通知</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+${item.user.name}さんの専門分野の文が有効期間の満了日が到来しています。<br>登録文を検討して、継続的な活用が必要記事の場合、有効期間を延長してください。
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'MS PGothic'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">ポータル名</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">アプリ名</td>
+<td style="padding-left:12px; color:#646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">該当件数</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.count}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</ja>
+					<zh>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>システム通知</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+$ {item.user.name}的专业文本的到期日期临近。<br>请查看已注册的文章，并延长需要连续使用的文章的有效期。
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">门户名称</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">应用名称</td>
+<td style="padding-left:12px; color:#646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">案件数</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.count}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</zh>
+					<in>
+					<![CDATA[<div id="message" style="font-size:12px; font-family:'돋움체';">
+<div id="title" style="margin-bottom:16px; padding:3px 0px 6px 5px; border-bottom:1px solid #c4cfdf; font-size:14px; color:#252525;">
+<b>Pengumuman sistem</b>
+</div>
+<div id="note" style="margin-bottom:10px; padding-left:5px; color:#2c4e7d;">
+Tanggal kedaluwarsa teks khusus ${item.user.name} semakin dekat.<br>Harap tinjau artikel terdaftar dan perpanjang masa berlaku untuk artikel yang memerlukan penggunaan berkelanjutan.
+</div>
+<div id="table" style="border-top:2px solid #b0c1d8;border-bottom:2px solid #b0c1d8;">
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="font-size:12px; font-family:'돋움체'; color:#646464;">
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Nama Portal</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;">${spaceName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Nama Aplikasi</td>
+<td style="padding-left:12px; color:#646464; text-decoration: none;">${appName}</td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+<tr>
+<td height="27" width="90" style="background:#f1f4f7; text-align:center; color:#2c4e7d;">Jumlah kasus</td>
+<td style="padding-left:12px; color:#646464; text-decoration:none;"><b>${item.count}</b></td>
+</tr>
+<tr>
+<td height="1" style="background:#d4dee8;font-size:0px;" colspan="2"></td>
+</tr>
+</table>
+</div>
+</div>]]>
+					</in>
+					</content>
+				</value>
+			</entry>
+		</notify>
+		<alimi>
+			<entry key="answerNew" important="true" updateStr="5" name="{&quot;ko&quot;:&quot;게시글 답변시(소유자)&quot;,&quot;en&quot;:&quot;When a reply is posted (Owner)&quot;,&quot;zh&quot;:&quot;回帖时(发帖人)&quot;,&quot;ja&quot;:&quot;書き込みに回答登録時(作成者)&quot;,&quot;in&quot;:&quot;Saat balasan diposting (Pemilik)&quot;}" checked="true" >
+				<title>{"ko":"글에 답변이 등록되었습니다.","en":"The answer has been posted on the post.","zh":"答案已张贴在帖子上。","ja":"私のエントリーに返答されました。","in":"Jawabannya sudah diposting di postingan."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="expireMaster" important="true" updateStr="5" name="{&quot;ko&quot;:&quot;기한 만료시 알림(분류 관리자)&quot;,&quot;en&quot;:&quot;Notification when the deadline expires (classification manager)&quot;,&quot;zh&quot;:&quot;截止日期到期时通知（分类经理）&quot;,&quot;ja&quot;:&quot;期限満了時に通知（分類管理者）&quot;,&quot;in&quot;:&quot;Pengumuman saat batas waktu berakhir (Pengelola klasifikasi)&quot;}" checked="true" >
+				<title> {"ko":"글의 기한이 만료되었습니다.","en":"The deadline for the article has expired.","zh":"文章的截止日期已过期。","ja":"文の有効期限が切れました。","in":"Batas waktu artikel telah habis."}</title>
+				<url>F:/ekp/mbs/mstr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/mstr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="beforeExpireMaster" important="true" updateStr="5" name="{&quot;ko&quot;:&quot;기한 만료 예정시 알림(분류 관리자)&quot;,&quot;en&quot;:&quot;Notification when the deadline is about to expire (classification manager)&quot;,&quot;zh&quot;:&quot;截止日期即将到期时的通知（分类管理员）&quot;,&quot;ja&quot;:&quot;期限満了予定時に通知（分類管理者）&quot;,&quot;in&quot;:&quot;Pengumuman ketika batas waktu akan segera berakhir (Pengelola klasifikasi)&quot;}" checked="true" >
+				<title> {"ko":"기한이 만료예정인 글이 있습니다.","en":"There is an article whose deadline is about to expire.","zh":"有一篇文章的截止日期即将到期。","ja":"有効期限が切れ予定文があります。","in":"Ada artikel yang batas waktunya akan habis."}</title>
+				<url></url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl></mobileUrl>
+				<mobileMenuUrl></mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="editNew" updateStr="5" name="{&quot;ko&quot;:&quot;버전업 시 알림(소유자)&quot;,&quot;en&quot;:&quot;Notification when version is upgraded (owner)&quot;,&quot;zh&quot;:&quot;版本升级时通知（所有者）&quot;,&quot;ja&quot;:&quot;バージョンアップ時に通知（所有者）&quot;,&quot;in&quot;:&quot;Pengumuman saat versi ditingkatkan (pemilik)&quot;}" checked="true" >
+				<title>{"ko":"내 글이 버전업(Version upgrade) 되었습니다.","en":"My post has been version upgraded.","zh":"私の文章がバージョンアップ（Version upgrade）されました。","ja":"我的帖子已经版本升级。","in":"Posting saya telah ditingkatkan versinya."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="opnNew" updateStr="5" name="{&quot;ko&quot;:&quot;의견 등록시 알림&quot;,&quot;en&quot;:&quot;Notify me upon new comments&quot;,&quot;zh&quot;:&quot;发表意见时提醒&quot;,&quot;ja&quot;:&quot;コメントが登録された時&quot;,&quot;in&quot;:&quot;Beritahu saya jika ada komentar baru&quot;}" checked="true" >
+				<title>{"ko":"글에 의견이 등록되었습니다.","en":"A comment has been posted.","zh":"有发表的意见。","ja":"に意見が登録されました。","in":"Sebuah komentar telah diposting."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/opn/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="replyOpnNew" updateStr="5" name="{&quot;ko&quot;:&quot;의견에  덧글 등록시 알림&quot;,&quot;en&quot;:&quot;Notify me upon new comment replies&quot;,&quot;zh&quot;:&quot;意见有跟帖时提醒&quot;,&quot;ja&quot;:&quot;コメントに返信が登録された時&quot;,&quot;in&quot;:&quot;Beritahu saya jika ada balasan komentar baru&quot;}" checked="true" >
+				<title> {"ko":"내 의견에 덧글이 등록되었습니다.","en":"Comments have been posted in my comments.","zh":"评论已发布在我的评论中。","ja":"私のコメントに返信されました。","in":"Komentar telah diposting di komentar saya."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/opn/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="recommendNew" updateStr="5" name="{&quot;ko&quot;:&quot;글 추천시 알림&quot;,&quot;en&quot;:&quot;Notify me when my posts are recommended&quot;,&quot;zh&quot;:&quot;推荐文章时的通知&quot;,&quot;ja&quot;:&quot;エントリーを薦められた時&quot;,&quot;in&quot;:&quot;Beritahu saya ketika posting saya direkomendasikan&quot;}" checked="true" >
+				<title> {"ko":"내 글이 지식으로 추천되었습니다.","en":"My writing was recommended for knowledge.","zh":"我的写作被推荐为知识。","ja":"私のエントリーが知識としておすすめされました。","in":"Tulisan saya direkomendasikan untuk pengetahuan."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="sympathyNew" updateStr="5" name="{&quot;ko&quot;:&quot;공감 등록시 알림&quot;,&quot;en&quot;:&quot;Notify me upon new Feelings&quot;,&quot;zh&quot;:&quot;表示同情时的通知&quot;,&quot;ja&quot;:&quot;共感を登録する時&quot;,&quot;in&quot;:&quot;Beritahu saya tentang Perasaan baru&quot;}" checked="true" >
+				<title>{"ko":"글에 공감이 등록되었습니다.","en":"Empathy has been registered in the article.","zh":"移情已被注册在文章中。","ja":"私のエントリーに共感が登録されました。","in":"Empati telah terdaftar dalam artikel."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/symp/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="opnMentionNew" updateStr="5" name="{&quot;ko&quot;:&quot;의견에 언급시 알림&quot;,&quot;en&quot;:&quot;Notify me when commented&quot;,&quot;zh&quot;:&quot;评论时通知我&quot;,&quot;ja&quot;:&quot;意見に言及時に通知&quot;,&quot;in&quot;:&quot;Beritahu saya ketika dikomentari&quot;}" checked="true" >
+				<title>{"ko":"의견에 언급되었습니다.","en":"Mentioned in the comments.","zh":"在评论中提及。","ja":"意見に言及しました。","in":"Disebutkan dalam komentar."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/opn/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+			<entry key="registerFrdNew" updateStr="5" name="{&quot;ko&quot;:&quot;글 등록시 구독자에게 알림&quot;,&quot;en&quot;:&quot;Notify subscribers when posting a post&quot;,&quot;zh&quot;:&quot;发布帖子时通知订阅者&quot;,&quot;ja&quot;:&quot;記事登録時のサブスクライバに通知&quot;,&quot;in&quot;:&quot;Beritahu pelanggan saat memposting suatu posting&quot;}" checked="true" >
+				<title>{"ko":"새글이 등록되었습니다.","en":"A new post has been registered.","zh":"一个新的职位已被注册。","ja":"新しく記事が登録されました。","in":"Sebuah posting baru telah terdaftar."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>1</type>
+			</entry>
+			<entry key="answerFrdNew" updateStr="5" name="{&quot;ko&quot;:&quot;답변등록시 구독자에게 알림&quot;,&quot;en&quot;:&quot;Notify subscribers when responding&quot;,&quot;zh&quot;:&quot;响应时通知订户&quot;,&quot;ja&quot;:&quot;回答登録時のサブスクライバに通知&quot;,&quot;in&quot;:&quot;Beritahu pelanggan saat merespons&quot;}" checked="true" >
+				<title>{"ko":"새글이 등록되었습니다.","en":"A new post has been registered.","zh":"一个新的职位已被注册。","ja":"新しく記事が登録されました。","in":"Sebuah posting baru telah terdaftar."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>1</type>
+			</entry>
+			<entry key="registerNew" important="true" updateStr="5" name="{&quot;ko&quot;:&quot;글 등록시 '새글알림' 대상자에게 알림&quot;,&quot;en&quot;:&quot;Notification to recipients of 'new post notification' when registering a post&quot;,&quot;zh&quot;:&quot;注册帖子时通知收件人'新帖子通知'&quot;,&quot;ja&quot;:&quot;文登録時「新しく記事を通知」対象者に通知&quot;,&quot;in&quot;:&quot;Pengumuman kepada penerima 'pengumuman posting baru' ketika mendaftarkan suatu posting&quot;}" checked="true" >
+				<title>{"ko":"새글이 등록되었습니다.","en":"A new post has been registered.","zh":"一个新的职位已被注册。","ja":"新しく記事が登録されました。","in":"Sebuah posting baru telah terdaftar."}</title>
+				<url>F:/ekp/mbs/usr.read.jsp?id=${item.id}</url>
+				<menuUrl>B:/ekp/mbs/usr.index.jsp</menuUrl>
+				<mobileUrl>/apps/mbs/usr/list/read/${item.id}</mobileUrl>
+				<mobileMenuUrl>/apps/mbs/usr/list</mobileMenuUrl>
+				<originUrl>B:/ekp/mbs/usr.index.jsp?url=/ekp/mbs/usr.read.jsp?id=${item.id}</originUrl>
+				<type>0</type>
+			</entry>
+		</alimi>
+		<config proxy="com.kcube.ekp.mbs.MbItemConfig" >
+			<entry key="listIdRownum" ctgr="U" name="{&quot;ko&quot;:&quot;목록 번호에 rownum 표시&quot;,&quot;en&quot;:&quot;Display rownum in List Number&quot;,&quot;zh&quot;:&quot;在目录序号中显示rownum&quot;,&quot;ja&quot;:&quot;リスト番号にrownum表示&quot;,&quot;in&quot;:&quot;Tampilkan nomor baris di Daftar Nomor&quot;}" editLevel="user" component="BooleanFieldEditor" value="true" />
+			<entry key="readCntPopup" ctgr="U" name="{&quot;ko&quot;:&quot;조회수에 조회자 팝업 사용 여부&quot;,&quot;en&quot;:&quot;Open a popup on click&quot;,&quot;zh&quot;:&quot;查看浏览次数时是否使用弹出窗&quot;,&quot;ja&quot;:&quot;照会数をクリックした際のポップアップ表示有無&quot;,&quot;in&quot;:&quot;Buka popup saat diklik&quot;}" editLevel="user" component="BooleanFieldEditor" value="true" />
+			<entry key="duplex" ctgr="U" name="{&quot;ko&quot;:&quot;이전글/다음글 사용 여부&quot;,&quot;en&quot;:&quot;Use Previous Post/Next Post&quot;,&quot;zh&quot;:&quot;是否使用上一篇/下一篇&quot;,&quot;ja&quot;:&quot;前へ/次へ使用有無&quot;,&quot;in&quot;:&quot;Gunakan Posting Sebelumnya/Posting Berikutnya&quot;}" editLevel="user" component="BooleanFieldEditor" value="true" />
+			<entry key="mbsFileSize" name="{&quot;ko&quot;:&quot;파일별 최대크기(MB)&quot;,&quot;en&quot;:&quot;Max file size(MB)&quot;,&quot;zh&quot;:&quot;每个文件的最大大小(MB)&quot;,&quot;ja&quot;:&quot;ファイル最大サイズ(MB)&quot;,&quot;in&quot;:&quot;Ukuran berkas maksimum (MB)&quot;}" editLevel="admin" component="TextFieldEditor" value="-1" />
+			<entry key="mbsTotalSize" name="{&quot;ko&quot;:&quot;문서당 최대크기(MB)&quot;,&quot;en&quot;:&quot;Max document size(MB)&quot;,&quot;zh&quot;:&quot;每个文档的最大大小(MB)&quot;,&quot;ja&quot;:&quot;文書最大サイズ(MB)&quot;,&quot;in&quot;:&quot;Ukuran maksimal dokumen (MB)&quot;}" editLevel="admin" component="TextFieldEditor" value="-1" />
+			<entry key="sympathy" name="{&quot;ko&quot;:&quot;공감사용여부&quot;,&quot;en&quot;:&quot;Whether to use empathy&quot;,&quot;zh&quot;:&quot;是否使用同理心&quot;,&quot;ja&quot;:&quot;共感を使用します。&quot;,&quot;in&quot;:&quot;Apakah akan menggunakan empati&quot;}" editLevel="user" component="BooleanFieldEditor" value="true" />
+			<entry key="sympathyIcons" name="{&quot;ko&quot;:&quot;공감아이콘선택&quot;,&quot;en&quot;:&quot;Select empathy icon&quot;,&quot;zh&quot;:&quot;选择移情图标&quot;,&quot;ja&quot;:&quot;共感アイコン選択&quot;,&quot;in&quot;:&quot;Pilih ikon empati&quot;}" editLevel="user" component="SympathyIconSelectEditor" value="0" />
+			<entry key="fvrtIndexUrl" name="{&quot;ko&quot;:&quot;북마크IndexUrl&quot;,&quot;en&quot;:&quot;Bookmark IndexUrl&quot;,&quot;zh&quot;:&quot;Bookmark IndexUrl&quot;,&quot;ja&quot;:&quot;Bookmark IndexUrl&quot;,&quot;in&quot;:&quot;Url Indeks Bookmark&quot;}" editLevel="admin" component="TextFieldEditor" value="B:/ekp/mbs/usr.index.jsp?url=" />
+		</config>
+		<mileage>
+			<entry key="1039.20" name="{&quot;ko&quot;:&quot;글등록[작성자]&quot;,&quot;en&quot;:&quot;Register Posts [Creator]&quot;,&quot;zh&quot;:&quot;发帖[作者]&quot;,&quot;ja&quot;:&quot;掲示文登録[作成者]&quot;,&quot;in&quot;:&quot;Daftarkan Postingan [Pembuat]&quot;}" />
+			<entry key="1009.20" name="{&quot;ko&quot;:&quot;글삭제[작성자]&quot;,&quot;en&quot;:&quot;Delete Posts [Creator]&quot;,&quot;zh&quot;:&quot;删除帖[作者]&quot;,&quot;ja&quot;:&quot;掲示文削除[作成者]&quot;,&quot;in&quot;:&quot;Hapus Postingan [Pembuat]&quot;}" />
+			<entry key="1002.20" name="{&quot;ko&quot;:&quot;답변글등록[작성자]&quot;,&quot;en&quot;:&quot;Register Posts [Creator]&quot;,&quot;zh&quot;:&quot;发帖[作者]&quot;,&quot;ja&quot;:&quot;掲示文登録[作成者]&quot;,&quot;in&quot;:&quot;Daftarkan Postingan [Pembuat]&quot;}" />
+			<entry key="1011.20" name="{&quot;ko&quot;:&quot;답변글삭제[작성자]&quot;,&quot;en&quot;:&quot;Delete Posted Answers [Creator]&quot;,&quot;zh&quot;:&quot;删除回答帖[作者]&quot;,&quot;ja&quot;:&quot;掲示返答削除[作成者]&quot;,&quot;in&quot;:&quot;Hapus Jawaban yang diposting [Pembuat]&quot;}" />
+			<entry key="1031.0" name="{&quot;ko&quot;:&quot;글조회[조회자]&quot;,&quot;en&quot;:&quot;View Posts [Viewer]&quot;,&quot;zh&quot;:&quot;帖子查询[查询者]&quot;,&quot;ja&quot;:&quot;掲示文照会[照会者]&quot;,&quot;in&quot;:&quot;Lihat Postingan [Penonton]&quot;}" />
+			<entry key="1031.20" name="{&quot;ko&quot;:&quot;글조회[작성자]&quot;,&quot;en&quot;:&quot;View Posts [Creator]&quot;,&quot;zh&quot;:&quot;帖子查询[作者]&quot;,&quot;ja&quot;:&quot;掲示文照会[作成者]&quot;,&quot;in&quot;:&quot;Lihat Postingan [Pembuat]&quot;}" />
+			<entry key="1013.0" name="{&quot;ko&quot;:&quot;글첨부조회[조회자]&quot;,&quot;en&quot;:&quot;View Post Attachments [Viewer]&quot;,&quot;zh&quot;:&quot;帖子附件查询[查询者]&quot;,&quot;ja&quot;:&quot;掲示文添付照会[照会者]&quot;,&quot;in&quot;:&quot;Lihat Lampiran Postingan [Penonton]&quot;}" />
+			<entry key="1013.20" name="{&quot;ko&quot;:&quot;글첨부조회[작성자]&quot;,&quot;en&quot;:&quot;View Post Attachments [Creator]&quot;,&quot;zh&quot;:&quot;帖子附件查询[作者]&quot;,&quot;ja&quot;:&quot;掲示文添付照会[作成者]&quot;,&quot;in&quot;:&quot;Lihat Lampiran Postingan [Pembuat]&quot;}" />
+			<entry key="1025.0" name="{&quot;ko&quot;:&quot;글의견추가[추가자]&quot;,&quot;en&quot;:&quot;Add Opinions for Posts [Commenter]&quot;,&quot;zh&quot;:&quot;添加帖子意见[评论者]&quot;,&quot;ja&quot;:&quot;掲示文意見追加[コメント作成者]&quot;,&quot;in&quot;:&quot;Tambahkan Opini untuk Postingan [Komentar]&quot;}" />
+			<entry key="1027.40" name="{&quot;ko&quot;:&quot;글의견삭제[삭제자]&quot;,&quot;en&quot;:&quot;Delete Opinions for Posts [Deleter]&quot;,&quot;zh&quot;:&quot;删除帖子意见[删除人]&quot;,&quot;ja&quot;:&quot;掲示文意見削除[削除者]&quot;,&quot;in&quot;:&quot;Hapus Opini untuk Postingan [Penghapus]&quot;}" />
+			<entry key="1037.0" name="{&quot;ko&quot;:&quot;글관련자료추가[추가자]&quot;,&quot;en&quot;:&quot;Add Knowledge related to Posts [Adder]&quot;,&quot;zh&quot;:&quot;添加帖子相关知识[添加人]&quot;,&quot;ja&quot;:&quot;掲示文関連知識追加[追加者]&quot;,&quot;in&quot;:&quot;Tambahkan Pengetahuan yang berkaitan dengan Postingan [Penambah]&quot;}" />
+			<entry key="1038.40" name="{&quot;ko&quot;:&quot;글관련자료삭제[삭제자]&quot;,&quot;en&quot;:&quot;Delete Knowledge related to Posts [Deleter]&quot;,&quot;zh&quot;:&quot;删除帖子相关知识[删除人]&quot;,&quot;ja&quot;:&quot;掲示文関連知識削除[削除者]&quot;,&quot;in&quot;:&quot;Hapus Pengetahuan terkait Postingan [Penghapus]&quot;}" />
+			<entry key="1034.0" name="{&quot;ko&quot;:&quot;글복원[관리자]&quot;,&quot;en&quot;:&quot;Restore Posts [Admin]&quot;,&quot;zh&quot;:&quot;恢复发帖[管理员]&quot;,&quot;ja&quot;:&quot;掲示復元[管理者]&quot;,&quot;in&quot;:&quot;Pulihkan Postingan [Admin]&quot;}" />
+			<entry key="1034.20" name="{&quot;ko&quot;:&quot;글복원[작성자]&quot;,&quot;en&quot;:&quot;Restore Posts [Creator]&quot;,&quot;zh&quot;:&quot;恢复发帖[作者]&quot;,&quot;ja&quot;:&quot;掲示復元[作成者]&quot;,&quot;in&quot;:&quot;Pulihkan Postingan [Pembuat]&quot;}" />
+			<entry key="1047.0" name="{&quot;ko&quot;:&quot;글폐기[관리자]&quot;,&quot;en&quot;:&quot;Discard Posts [Admin]&quot;,&quot;zh&quot;:&quot;清除发帖[管理员&quot;,&quot;ja&quot;:&quot;掲示破棄[管理者]&quot;,&quot;in&quot;:&quot;Buang Postingan [Admin]&quot;}" />
+			<entry key="1047.20" name="{&quot;ko&quot;:&quot;글폐기[작성자]&quot;,&quot;en&quot;:&quot;Discard Posts [Creator]&quot;,&quot;zh&quot;:&quot;清除发帖[作者]&quot;,&quot;ja&quot;:&quot;掲示破棄[作成者]&quot;,&quot;in&quot;:&quot;Buang Postingan [Pembuat]&quot;}" />
+			<entry key="1033.0" name="{&quot;ko&quot;:&quot;글추천[추천자]&quot;,&quot;en&quot;:&quot;Recommend Posts [Recommender]&quot;,&quot;zh&quot;:&quot;发帖推荐[推荐人]&quot;,&quot;ja&quot;:&quot;掲示推薦[推薦者]&quot;,&quot;in&quot;:&quot;Rekomendasikan Postingan [Rekomendasi]&quot;}" />
+			<entry key="1033.20" name="{&quot;ko&quot;:&quot;글피추천[작성자]&quot;,&quot;en&quot;:&quot;Posts Recommended [Creator]&quot;,&quot;zh&quot;:&quot;发帖被推荐[作者]&quot;,&quot;ja&quot;:&quot;掲示被推薦[作成者]&quot;,&quot;in&quot;:&quot;Rekomendasikan Postingan [Pembuat]&quot;}" />
+			<entry key="1014.20" name="{&quot;ko&quot;:&quot;위키글 버전업[작성자]&quot;,&quot;en&quot;:&quot;Upgrade Posts on Wiki [Creator]&quot;,&quot;zh&quot;:&quot;wiki帖版本升级[作者]&quot;,&quot;ja&quot;:&quot;ウィキ投稿文バージョンアップ[作成者]&quot;,&quot;in&quot;:&quot;Tingkatkan Postingan di Wiki [Pembuat]&quot;}" />
+			<entry key="1009.20" name="{&quot;ko&quot;:&quot;위키글 완전삭제[작성자]&quot;,&quot;en&quot;:&quot;Delete Posts on Wiki Completely [Creator]&quot;,&quot;zh&quot;:&quot;wiki帖完全删除[作者]&quot;,&quot;ja&quot;:&quot;ウィキ投稿文完全削除[作成者]&quot;,&quot;in&quot;:&quot;Hapus Postingan di Wiki Sepenuhnya [Pembuat]&quot;}" />
+			<entry key="1012.20" name="{&quot;ko&quot;:&quot;위키글 해당버전삭제[작성자]&quot;,&quot;en&quot;:&quot;Delete the Relevant Post Version on Wiki [Creator]&quot;,&quot;zh&quot;:&quot;删除wiki帖指定版本[作者]&quot;,&quot;ja&quot;:&quot;ウィキ投稿文該当バージョン削除[作成者]&quot;,&quot;in&quot;:&quot;Hapus Versi Postingan yang Relevan di Wiki [Pembuat]&quot;}" />
+		</mileage>
+	</tabs>
+</configuration>

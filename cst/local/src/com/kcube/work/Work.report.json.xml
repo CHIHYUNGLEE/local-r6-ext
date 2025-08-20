@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<mapping class="com.kcube.work.report.ReportTemplate">
+	<bean class="com.kcube.work.report.ReportTemplate">
+		<value name="id" />
+		<value name="classId" />
+		<value name="menuId" />
+		<value name="appId" />
+		<value name="moduleId" />
+		<value name="tenantId" />
+		<value name="spaceId" />
+		<value name="title" />
+		<value name="status" />
+		<value name="lastUpdt" />
+		<value name="lastUpdtAuthor" />
+		<value name="rgstDate" />
+		<value name="rgstUser" />
+		<value name="dnldCnt" />
+		<value name="attachment" source="com.kcube.work.report.ReportTemplate$ReportTemplateAttachment" />
+	</bean>
+	<bean class="com.kcube.work.report.ReportTemplate$ReportTemplateAttachment">
+		<value name="id" />
+		<value name="path" />
+		<value name="type" />
+		<value name="filename" />
+		<value name="size" method="filesize" />
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+</mapping>

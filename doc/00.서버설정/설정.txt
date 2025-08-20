@@ -1,0 +1,23 @@
+localhost
+
+1521
+
+xe
+
+
+localid/localpwd
+
+--20231212 오라클 비번 만료 되서 sqlplus로 비번 번경하고
+비번 변경 주기 무제한으로 변경.
+
+select * from dba_profiles
+
+where resource_type='PASSWORD';
+
+ALTER PROFILE default LIMIT
+
+FAILED_LOGIN_ATTEMPTS 5
+
+PASSWORD_LIFE_TIME UNLIMITED
+
+PASSWORD_GRACE_TIME  10;

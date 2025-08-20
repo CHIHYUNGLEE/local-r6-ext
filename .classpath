@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="cst/local/conf"/>
+	<classpathentry kind="src" path="cst/local/resources"/>
+	<classpathentry kind="src" path="cst/local/src"/>
+	<classpathentry kind="src" path="cst/local/web"/>
+	<classpathentry kind="src" path="cst/local/patch"/>
+	<classpathentry kind="lib" path="lib/kcube-util-1.1.jar"/>
+	<classpathentry kind="lib" path="war/app/Converse-1.8.war"/>
+	<classpathentry kind="lib" path="war/app/Guide-1.8.war"/>
+	<classpathentry kind="lib" path="war/app/OjtItem-1.8.war"/>
+	<classpathentry kind="lib" path="war/app/PatchItem-1.8.war"/>
+	<classpathentry kind="lib" path="lib/svnkit-1.9.3.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="war/app/AbItem-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/AlItem-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/BdItem-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/Enqt-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/Expert-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/Forum-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/Human-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/KItem-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/MbItem-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/QaItem-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/Survey-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/Task-1.9.war"/>
+	<classpathentry kind="lib" path="war/app/WikiBook-1.8.war"/>
+	<classpathentry kind="lib" path="war/app/WikiItem-1.9.war"/>
+	<classpathentry kind="lib" path="lib/r6-1.9.jar"/>
+	<classpathentry kind="lib" path="lib/r6-dep-1.9.jar"/>
+	<classpathentry kind="lib" path="lib/jsoup-1.16.2.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

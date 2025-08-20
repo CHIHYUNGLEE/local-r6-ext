@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false">
+	<class name="com.kcube.work.Work" table="work_item">
+		<id name="id" column="itemid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_ITEM</param>
+			</generator>
+		</id>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date" />
+		<property name="lastUpdt" column="last_updt" type="java.util.Date" />
+		<property name="status" column="status" type="integer" />
+		<property name="beforeStatus" column="before_status" type="integer" />
+		<property name="visible" column="isvisb" type="boolean" />
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString" />
+		<component name="author" class="com.kcube.sys.usr.User">
+			<property name="userId" column="auth_userid" type="java.lang.Long" />
+			<property name="name" column="auth_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="auth_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="actor" class="com.kcube.sys.usr.User">
+			<property name="userId" column="actor_userid" type="java.lang.Long" />
+			<property name="name" column="actor_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="actor_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<property name="readCnt" column="read_cnt" type="integer" />
+		<property name="sympathyCnt" column="sympathy_cnt" type="integer"/>
+		<property name="opnCnt" column="opn_cnt" type="integer" />
+		<property name="planCnt" column="plan_cnt" type="integer" />
+		<property name="completeDate" column="complete_date" type="java.util.Date" />
+		<property name="trnsSrc" column="trns_src" type="com.kcube.lib.jdbc.EncString" />
+		<property name="trnsKey" column="trns_key" type="com.kcube.lib.jdbc.EncString" />
+		<property name="fileExt" column="file_ext" type="com.kcube.lib.jdbc.EncString" />
+		<property name="scrtLevel" column="scrt_level" type="integer" />
+		<property name="comm" column="comm" type="com.kcube.lib.jdbc.EncString" />
+		<property name="clob" column="content" type="clob" />
+		<property name="chargeDprtName" column="charge_dprt_name" type="com.kcube.lib.jdbc.EncString" />
+		<property name="chargeDprtId" column="charge_dprtid" type="java.lang.Long" />
+		<property name="exprDate" column="expr_date" type="java.util.Date"/>
+		<property name="exprMonth" column="expr_mnth" type="integer"/>
+		<property name="itemsVisible" column="items_visb" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="isHelper" column="ishelper" type="boolean"/>
+		<property name="isShare" column="isshare" type="boolean"/>
+		<property name="transfer" column="istransfer" type="boolean" />
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<property name="tenantId" column="tenantid" type="java.lang.Long"/>
+		<property name="totalFileSize" column="total_filesize" type="java.lang.Long"/>
+		<property name="lastProcessGid" column="last_prcs_gid" type="java.lang.Long"/>
+		<component name="approver" class="com.kcube.sys.usr.User">
+			<property name="userId" column="appr_userid" type="java.lang.Long" />
+			<property name="name" column="appr_username" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="appr_userdisp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<property name="reportSketch" column="report_sketch" type="com.kcube.lib.jdbc.EncString"/>
+		<list name="reviewers" table="work_item_reviewer" lazy="true">
+			<key column="itemid" />
+			<index column="seq_order" />
+			<composite-element class="com.kcube.sys.usr.User">
+				<property name="userId" column="userid" type="java.lang.Long" />
+				<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString" />
+				<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString" />
+			</composite-element>
+		</list>
+		<list name="helpers" table="work_item_helper" lazy="true">
+			<key column="itemid" />
+			<index column="seq_order" />
+			<composite-element class="com.kcube.sys.usr.User">
+				<property name="userId" column="userid" type="java.lang.Long" />
+				<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString" />
+				<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString" />
+			</composite-element>
+		</list>
+		<list name="sharers" table="work_item_share" lazy="true">
+			<key column="itemid" />
+			<index column="seq_order" />
+			<composite-element class="com.kcube.sys.usr.User">
+				<property name="userId" column="share_userid" type="java.lang.Long" />
+				<property name="name" column="share_name" type="com.kcube.lib.jdbc.EncString" />
+				<property name="displayName" column="share_disp" type="com.kcube.lib.jdbc.EncString" />
+			</composite-element>
+		</list>
+		<set name="sympathies" table="work_item_sympathy" lazy="true" order-by="inst_date">
+			<key column="itemid"/>
+			<composite-element class="com.kcube.doc.symp.Sympathy">
+				<property name="userId" column="userid" type="java.lang.Long"/>
+				<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="sympType" column="symp_type" type="integer"/>
+				<property name="instDate" column="inst_date" type="java.util.Date"/>
+			</composite-element>
+		</set>
+		<set name="opinions" inverse="true" lazy="true" order-by="gid, opnid">
+			<key column="itemid" />
+			<one-to-many class="com.kcube.work.Work$Opinion" />
+		</set>
+		<list name="securities" table="work_item_scrt" lazy="true">
+			<key column="itemid"/>
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.doc.Item$Security">
+				<property name="xid" column="xid" type="java.lang.Long"/>
+				<property name="title" column="title" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="visible" column="isvisb" type="boolean"/>
+				<property name="computed" column="iscomp" type="boolean"/>
+			</composite-element>
+		</list>
+		<list name="tags" table="work_item_tag" lazy="true">
+			<key column="itemid"/>
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.doc.Item$Tag">
+				<property name="tag" column="tag" type="com.kcube.lib.jdbc.EncString"/>
+				<property name="itemDate" column="item_date" type="java.util.Date"/>
+				<property name="visible" column="isvisb" type="boolean"/>
+			</composite-element>
+		</list>
+		<set name="workAttachments" inverse="true" lazy="true" sort="natural">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.work.Work$WorkAttachment"/>
+		</set>
+		<set name="reportFiles" inverse="true" lazy="true" sort="natural">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.work.Work$ReportFile"/>
+		</set>
+		<set name="attachments" inverse="true" lazy="true" sort="natural">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.work.Work$EditorAttachment"/>
+		</set>
+		<list name="folders" table="work_item_map" lazy="true">
+			<key column="itemid"/>
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.doc.Item$Folder">
+				<property name="folderId" column="kmid" type="java.lang.Long"/>
+				<property name="level1" column="level1" type="java.lang.Long"/>
+				<property name="level2" column="level2" type="java.lang.Long"/>
+				<property name="level3" column="level3" type="java.lang.Long"/>
+				<property name="level4" column="level4" type="java.lang.Long"/>
+				<property name="visible" column="isvisb" type="boolean"/>
+				<property name="computed" column="iscomp" type="boolean"/>
+			</composite-element>
+		</list>
+		<set name="workReferences" inverse="true" lazy="true" sort="natural">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.work.WorkReference"/>
+		</set>
+		<set name="workProcess" inverse="true" lazy="true" order-by="event_date">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.work.process.WorkProcess"/>
+		</set>
+	</class>
+	
+	<class name="com.kcube.work.Work$Opinion" table="work_item_opn">
+		<id name="id" column="opnid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_ITEM_OPN</param>
+			</generator>
+		</id>
+		<property name="gid" column="gid" type="java.lang.Long" />
+		<property name="itemId" column="itemid" type="java.lang.Long" />
+		<property name="mobile" column="ismobile" type="boolean" />
+		<property name="content" column="content" type="com.kcube.lib.jdbc.EncString" />
+		<property name="rgstDate" column="rgst_date" type="java.util.Date" />
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="userid" type="java.lang.Long" />
+			<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+	</class>
+	
+	<class name="com.kcube.work.Work$WorkAttachment" table="work_item_atch">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_ITEM_ATCH</param>
+			</generator>
+		</id>
+		<component name="rgst" class="com.kcube.sys.usr.User">
+			<property name="userId" column="rgst_userid" type="java.lang.Long" />
+			<property name="name" column="rgst_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="rgst_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="checker" class="com.kcube.sys.usr.User">
+			<property name="userId" column="checkout_userid" type="java.lang.Long" />
+			<property name="name" column="checkout_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="checkout_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date"/>
+		<property name="gid" column="file_gid" type="java.lang.Long"/>
+		<property name="lastVersion" column="islastversion" type="boolean"/>
+		<property name="checkOut" column="ischeckdout" type="boolean"/>
+		<property name="vrsn" column="vrsn_num" type="java.lang.Long"/>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="filesize" column="file_size" type="java.lang.Long"/>
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="dnldCnt" column="dnld_cnt" type="integer"/>
+		<property name="type" column="save_code" type="integer"/>
+		<property name="fileExt" column="file_ext" type="com.kcube.lib.jdbc.EncString"/>
+		<many-to-one name="item" column="itemid" class="com.kcube.work.Work"/>
+	</class>
+
+	<class name="com.kcube.work.plan.WorkPlan" table="work_plan">
+		<id name="id" column="itemid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_PLAN</param>
+			</generator>
+		</id>
+		<property name="workId" column="workid" type="java.lang.Long" />
+		<property name="gid" column="gid" type="java.lang.Long" />
+		<property name="pid" column="pid" type="java.lang.Long"/>
+		<property name="pos" column="pos" type="integer"/>
+		<property name="step" column="step" type="integer"/>
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString" />
+		<property name="startDate" column="strt_date" type="java.util.Date" />
+		<property name="endDate" column="end_date" type="java.util.Date" />
+		<property name="completeDate" column="complete_date" type="java.util.Date" />
+		<property name="rgstDate" column="rgst_date" type="java.util.Date" />
+		<property name="lastUpdt" column="last_updt" type="java.util.Date" />
+		<property name="tenantId" column="tenantid" type="java.lang.Long"/>
+		<property name="status" column="status" type="integer" />
+		<property name="clob" column="content" type="clob" />
+		<property name="fileExt" column="file_ext" type="com.kcube.lib.jdbc.EncString" />
+		
+		<component name="author" class="com.kcube.sys.usr.User">
+			<property name="userId" column="auth_userid" type="java.lang.Long"/>
+			<property name="name" column="auth_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="auth_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<list name="planActors" table="work_plan_actor" lazy="true">
+			<key column="itemid" />
+			<index column="seq_order" />
+			<composite-element class="com.kcube.sys.usr.User">
+				<property name="userId" column="userid" type="java.lang.Long" />
+				<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString" />
+				<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString" />
+			</composite-element>
+		</list>
+		<set name="attachments" inverse="true" lazy="true" sort="natural">
+			<key column="itemid" />
+			<one-to-many class="com.kcube.work.plan.WorkPlan$Attachment" />
+		</set>
+	</class>
+	
+	<class name="com.kcube.work.plan.WorkPlan$Attachment" table="work_plan_file">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_TASK_PLAN_FILE</param>
+			</generator>
+		</id>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString" />
+		<property name="filesize" column="file_size" type="java.lang.Long" />
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString" />
+		<property name="dnldCnt" column="dnld_cnt" type="integer" />
+		<property name="type" column="save_code" type="integer" />
+		<many-to-one name="item" column="itemid" class="com.kcube.work.plan.WorkPlan" />
+	</class>
+	
+	<class name="com.kcube.work.report.ReportTemplate" table="work_report_template">
+		<id name="id" column="itemid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_REPORT_TEMPLATE</param>
+			</generator>
+		</id>
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<property name="tenantId" column="tenantid" type="java.lang.Long"/>
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString" />
+		<property name="status" column="status" type="integer" />
+		<property name="lastUpdt" column="last_updt" type="java.util.Date" />
+		<property name="rgstDate" column="rgst_date" type="java.util.Date" />
+		<property name="dnldCnt" column="dnld_cnt" type="integer"/>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="rgst_userid" type="java.lang.Long" />
+			<property name="name" column="rgst_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="rgst_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="lastUpdtAuthor" class="com.kcube.sys.usr.User">
+			<property name="userId" column="last_updt_userid" type="java.lang.Long" />
+			<property name="name" column="last_updt_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="last_updt_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+ 	 	<component name="attachment" class="com.kcube.work.report.ReportTemplate$ReportTemplateAttachment">
+			<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="filesize" column="file_size" type="java.lang.Long"/>
+			<property name="type" column="save_code" type="integer"/>
+			<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+	</class>
+	
+	
+	<class name="com.kcube.work.Work$ReportFile" table="WORK_ITEM_REPORT">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_ITEM_REPORT</param>
+			</generator>
+		</id>
+		<component name="rgst" class="com.kcube.sys.usr.User">
+			<property name="userId" column="rgst_userid" type="java.lang.Long" />
+			<property name="name" column="rgst_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="rgst_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="checker" class="com.kcube.sys.usr.User">
+			<property name="userId" column="checkout_userid" type="java.lang.Long" />
+			<property name="name" column="checkout_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="checkout_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date" />
+		<property name="gid" column="file_gid" type="java.lang.Long" />
+		<property name="lastVersion" column="islastversion" type="boolean" />
+		<property name="checkOut" column="ischeckdout" type="boolean" />
+		<property name="vrsn" column="vrsn_num" type="java.lang.Long" />
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString" />
+		<property name="filesize" column="file_size" type="java.lang.Long" />
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString" />
+		<property name="dnldCnt" column="dnld_cnt" type="integer" />
+		<property name="type" column="save_code" type="integer" />
+		<property name="fileExt" column="file_ext" type="com.kcube.lib.jdbc.EncString" />
+		<property name="tmpSavePath" column="tmp_save_path" type="com.kcube.lib.jdbc.EncString" />
+		<many-to-one name="item" column="itemid" class="com.kcube.work.Work" />
+	</class>
+	
+	<class name="com.kcube.work.Work$EditorAttachment" table="work_item_file">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_ITEM_FILE</param>
+			</generator>
+		</id>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="filesize" column="file_size" type="java.lang.Long"/>
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="dnldCnt" column="dnld_cnt" type="integer"/>
+		<property name="type" column="save_code" type="integer"/>
+		<many-to-one name="item" column="itemid" class="com.kcube.work.Work"/>
+	</class>
+	
+	<class name="com.kcube.work.WorkReference" table="work_item_rfrn">
+		<id name="id" column="rfrnid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_ITEM_RFRN</param>
+			</generator>
+		</id>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="filesize" column="file_size" type="java.lang.Long"/>
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="rfrnCode" column="rfrn_code" type="integer"/>
+		<property name="type" column="save_code" type="integer"/>
+		<property name="title" column="name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="query" column="rfrn_query" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="src" column="TRNS_SRC" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="rgstUserId" column="rgst_userid" type="java.lang.Long"/>
+		<many-to-one name="item" column="itemid" class="com.kcube.work.Work"/>
+	</class>
+	
+	<class name="com.kcube.work.request.share.WorkShareRequest" table="work_share_request">
+		<id name="id" column="reqid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_SHARE_REQUEST</param>
+			</generator>
+		</id>
+		<property name="workId" column="workid" type="java.lang.Long"/>
+		<property name="reqDate" column="req_date" type="java.util.Date"/>
+		<component name="reqUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="req_userid" type="java.lang.Long"/>
+			<property name="name" column="req_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="req_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="reqComment" column="req_comment" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="status" column="status" type="integer"/>
+		
+		<property name="resDate" column="res_date" type="java.util.Date"/>
+		<component name="resUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="res_userid" type="java.lang.Long"/>
+			<property name="name" column="res_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="res_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<property name="resComment" column="res_comment" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="del" column="isdel" type="boolean"/>
+	</class>
+	
+	<class name="com.kcube.work.chat.WorkChat" table="work_chat">
+		<id name="id" column="chatid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_CHAT</param>
+			</generator>
+		</id>
+		<property name="workId" column="workid" type="java.lang.Long"/>
+		<property name="mbrCnt" column="mbr_cnt" type="integer"/>
+		<property name="visible" column="isvisb" type="boolean"/>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date"/>
+		<property name="lastUpdt" column="last_updt" type="java.util.Date"/>
+		<property name="status" column="status" type="integer"/>
+		<property name="fileSize" column="file_size" type="java.lang.Long"/>
+		<property name="quota" column="file_quota" type="long"/>
+		
+		<list name="members" table="work_chat_mbr" lazy="true">
+			<key column="chatid" />
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.work.chat.WorkChat$Members">
+				<property name="userId" column="userid" type="java.lang.Long" />
+				<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString" />
+				<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString" />
+				<property name="readId" column="read_itemid" type="java.lang.Long" />
+				<property name="rgstDate" column="rgst_date" type="java.util.Date" />
+			</composite-element>
+		</list>
+	</class>
+	
+	<class name="com.kcube.work.chat.item.WorkChatItem" table="work_chat_item">
+		<id name="id" column="itemid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_CHAT_ITEM</param>
+			</generator>
+		</id>
+		<property name="chatId" column="chatid" type="java.lang.Long"/>
+		<property name="rgstDate" column="rgst_date" type="java.util.Date"/>
+		<property name="content" column="content" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="msgType" column="msg_type" type="integer"/>
+		<property name="emtcId" column="emtcid" type="java.lang.Long"/>
+		<property name="cstmField1" column="cstm_field1" type="com.kcube.lib.jdbc.EncString"/>
+		<component name="rgstUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="userid" type="java.lang.Long"/>
+			<property name="name" column="user_name" type="com.kcube.lib.jdbc.EncString"/>
+			<property name="displayName" column="user_disp" type="com.kcube.lib.jdbc.EncString"/>
+		</component>
+		<set name="attachments" inverse="true" lazy="true" sort="natural">
+			<key column="itemid"/>
+			<one-to-many class="com.kcube.work.chat.item.WorkChatItem$Attachment"/>
+		</set>
+	</class>
+	
+	<class name="com.kcube.work.chat.item.WorkChatItem$Attachment" table="work_chat_item_file">
+		<id name="id" column="fileid" type="java.lang.Long">
+			<generator class="native">
+		 		<param name="sequence_name">SQ_WORK_CHAT_ITEM_FILE</param>
+			</generator>
+		</id>
+		<property name="filename" column="file_name" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="filesize" column="file_size" type="java.lang.Long"/>
+		<property name="path" column="save_path" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="type" column="save_code" type="integer"/>
+		<property name="height" column="height" type="com.kcube.lib.jdbc.EncString"/>
+		<property name="width" column="width" type="integer"/>
+		<property name="itemId" column="itemid" type="java.lang.Long"/>
+		<component name="thumb" class="com.kcube.sys.upload.Upload">
+			<property name="path" column="thumb_save_path" type="com.kcube.lib.jdbc.EncString" />
+			<property name="type" column="thumb_save_code" type="integer" />
+		</component>
+	</class>
+	
+	<class name="com.kcube.work.process.WorkProcess" table="work_item_prcs">
+		<id name="id" column="prcsid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_ITEM_PRCS</param>
+			</generator>
+		</id>
+		<property name="gid" column="gid" type="java.lang.Long"/>
+		<property name="reqDate" column="req_date" type="java.util.Date" />
+		<property name="cmpltDate" column="cmplt_date" type="java.util.Date" />
+		<property name="status" column="status" type="integer" />
+		<property name="processType" column="PRCS_TYPE" type="integer" />
+		<property name="visible" column="isvisb" type="boolean" />
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString" />
+		<component name="inChage" class="com.kcube.sys.usr.User">
+			<property name="userId" column="incharge_userid" type="java.lang.Long" />
+			<property name="name" column="incharge_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="incharge_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="checker" class="com.kcube.sys.usr.User">
+			<property name="userId" column="checker_userid" type="java.lang.Long" />
+			<property name="name" column="checker_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="checker_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<property name="resContent" column="res_content" type="com.kcube.lib.jdbc.EncString" />
+		<property name="content" column="content" type="com.kcube.lib.jdbc.EncString" />
+		<property name="retrieve" column="ISRETRIEVED" type="boolean" />
+		<property name="read" column="isread" type="boolean" />
+		<property name="meetingReq" column="ismeetingReq" type="boolean" />
+		<property name="eventDate" column="event_date" type="java.util.Date" />
+		<property name="classId" column="classid" type="java.lang.Long"/>
+		<property name="moduleId" column="moduleid" type="java.lang.Long"/>
+		<property name="appId" column="appid" type="java.lang.Long"/>
+		<property name="spaceId" column="spid" type="java.lang.Long"/>
+		<set name="processComments" inverse="true" lazy="true" sort="natural">
+			<key column="prcsid"/>
+			<one-to-many class="com.kcube.work.process.WorkProcess$ProcessComment"/>
+		</set>
+		<many-to-one name="item" column="itemid" class="com.kcube.work.Work" />
+	</class>
+	
+	<class name="com.kcube.work.process.WorkProcess$ProcessComment" table="work_prcs_comm">
+		<id name="id" column="commid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_PRCS_COMM</param>
+			</generator>
+		</id>
+		<property name="prcsId" column="prcsid" type="java.lang.Long" />
+		<property name="instDate" column="inst_date" type="java.util.Date" />
+		<property name="status" column="status" type="integer" />
+		<property name="comment" column="comm" type="com.kcube.lib.jdbc.EncString" />
+	</class>
+	
+	<class name="com.kcube.work.trans.WorkTransfer" table="work_transfer">
+		<id name="id" column="transferid" type="java.lang.Long">
+			<generator class="native">
+				<param name="sequence_name">SQ_WORK_TRANSFER</param>
+			</generator>
+		</id>
+		<property name="reqDate" column="req_date" type="java.util.Date" />
+		<property name="resDate" column="res_date" type="java.util.Date" />
+		<property name="status" column="status" type="integer" />
+		<property name="title" column="title" type="com.kcube.lib.jdbc.EncString" />
+		<component name="reqUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="req_userid" type="java.lang.Long" />
+			<property name="name" column="req_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="req_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="resUser" class="com.kcube.sys.usr.User">
+			<property name="userId" column="res_userid" type="java.lang.Long" />
+			<property name="name" column="res_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="res_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<component name="owner" class="com.kcube.sys.usr.User">
+			<property name="userId" column="owner_userid" type="java.lang.Long" />
+			<property name="name" column="owner_name" type="com.kcube.lib.jdbc.EncString" />
+			<property name="displayName" column="owner_disp" type="com.kcube.lib.jdbc.EncString" />
+		</component>
+		<property name="resComm" column="res_comment" type="com.kcube.lib.jdbc.EncString" />
+		<property name="reqComm" column="req_comment" type="com.kcube.lib.jdbc.EncString" />
+		<property name="totalCount" column="total_count" type="integer"/>
+		<list name="itemList" table="work_transfer_item" lazy="true">
+			<key column="transid" />
+			<index column="seq_order"/>
+			<composite-element class="com.kcube.work.trans.WorkTransfer$WorkTransferItem">
+				<property name="workId" column="workid" type="java.lang.Long"/>
+				<property name="title" column="title" type="com.kcube.lib.jdbc.EncString"/>
+			</composite-element>
+		</list>
+	</class>
+	
+	<query name="getWorkChatByWorkId">
+	<![CDATA[
+		FROM WorkChat AS u WHERE u.workId = :workId
+	]]>
+	</query>
+	
+	<query name="getLastVersionFileByItemId">
+	<![CDATA[
+		FROM Work$WorkAttachment AS u WHERE u.lastVersion = true AND u.item.id = :itemId
+	]]>
+	</query>
+	
+	<query name="getNotLastVersionFileByItemId">
+	<![CDATA[
+		FROM Work$WorkAttachment AS u WHERE u.lastVersion = false AND u.item.id = :itemId
+	]]>
+	</query>
+	
+	<query name="getNotLastVersionReportByItemId">
+	<![CDATA[
+		FROM Work$ReportFile AS u WHERE u.lastVersion = false AND u.item.id = :itemId
+	]]>
+	</query>
+	
+	<query name="getLastVersionReportByItemId">
+	<![CDATA[
+		FROM Work$ReportFile AS u WHERE u.lastVersion = true AND u.item.id = :itemId
+	]]>
+	</query>
+	
+	<query name="getProcessByGid">
+	<![CDATA[
+		FROM WorkProcess AS u WHERE u.gid = :gid order by case when eventDate is not null then 1 else 0 end desc, eventDate desc
+	]]>
+	</query>
+	
+	<query name="getProcessByItemId">
+	<![CDATA[
+		FROM WorkProcess AS u WHERE u.item.id = :itemid order by u.id desc, u.reqDate desc
+	]]>
+	</query>		
+</hibernate-mapping>

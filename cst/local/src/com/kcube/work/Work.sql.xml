@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sql>
+	<table name="work_item">
+		<column groups="list" name="itemid" alias="id" />
+		<column groups="list" name="title" alias="title" />
+		<column groups="list" name="auth_userid" alias="userId" />
+		<column groups="list" name="auth_name" alias="userName" />
+		<column groups="list" name="auth_disp" alias="userDisp" />
+		<column groups="list" name="actor_userid" alias="actorUserId" />
+		<column groups="list" name="actor_name" alias="actorName" />
+		<column groups="list" name="actor_disp" alias="actorDisp" />
+		<column groups="list" name="rgst_date" alias="rgstDate" />
+		<column groups="list" name="last_updt" alias="lastUpdt" />
+		<column groups="list" name="expr_date" alias="exprDate" />
+		<column groups="list" name="read_cnt" alias="readCnt" />
+		<column groups="list" name="opn_cnt" alias="opnCnt" />
+		<column groups="list" name="plan_cnt" alias="planCnt" />
+		<column groups="list" name="complete_date" alias="completeDate" />
+		<column groups="list" name="status" alias="status" />
+		<column groups="list" name="file_ext" alias="fileExt" />
+		<column groups="list" name="scrt_level" alias="scrtLevel" />
+		<column groups="list" name="charge_dprt_name" alias="chrageDprtName" />
+		<column groups="list" name="charge_dprtid" alias="chargeDprtId" />
+		<column groups="list" name="ishelper" alias="isHelper" />
+		<column groups="list" name="isshare" alias="isShare" />
+		<column groups="list" name="istransfer" alias="isTransfer" />
+		<column groups="list" name="total_filesize" alias="totalFileSize" />
+		<column groups="list" name="moduleid" alias="moduleId" />
+		<column groups="list" name="appid" alias="appId" />
+		<column groups="list" name="classid" alias="classId" />
+		<column groups="list" name="spid" alias="spaceId" />
+		<column groups="" name="isvisb" alias="isVisb" />
+		<column groups="" name="recent_date" alias="recentDate" />
+	</table>
+	<table name="work_report_template">
+		<column groups="list" name="itemid" alias="id" />
+		<column groups="list" name="rgst_Date" alias="rgstDate" />
+		<column groups="list" name="last_updt" alias="lastUpdt" />
+		<column groups="list" name="status" alias="status" />
+		<column groups="list" name="title" alias="title" />
+		<column groups="list" name="rgst_userid" alias="userId" />
+		<column groups="list" name="rgst_name" alias="userName" />
+		<column groups="list" name="rgst_disp" alias="userDisp" />
+		<column groups="list" name="moduleid" alias="moduleId" />
+		<column groups="list" name="appid" alias="appId" />
+		<column groups="list" name="classid" alias="classId" />
+		<column groups="list" name="spid" alias="spaceId" />
+		<column groups="list" name="last_updt_userid" alias="lastUpdtUserId" />
+		<column groups="list" name="last_updt_name" alias="lastUpdtUserName" />
+		<column groups="list" name="last_updt_disp" alias="lastUpdtUserDisp" />
+		<column groups="list" name="file_name" alias="filename" />
+		<column groups="list" name="file_size" alias="filesize" />
+		<column groups="list" name="dnld_cnt" alias="dnldCnt" />
+		<column groups="list" name="save_code" alias="type" />
+		<column groups="list" name="save_path" alias="path" />
+	</table>
+	<table name="work_plan">
+		<column groups="list" name="itemid" alias="id" />
+		<column groups="list" name="gid" alias="gid" />
+		<column groups="list" name="pid" alias="pid" />
+		<column groups="list" name="workid" alias="workId" />
+		<column groups="list" name="pos" alias="pos" />
+		<column groups="list" name="step" alias="step" />
+		<column groups="list" name="title" alias="title" />
+		<column groups="list" name="strt_date" alias="startDate" />
+		<column groups="list" name="end_date" alias="endDate" />
+		<column groups="list" name="rgst_date" alias="rgstDate" />
+		<column groups="list" name="last_updt" alias="lastUpdt" />
+		<column groups="list" name="auth_userid" alias="userId" />
+		<column groups="list" name="auth_name" alias="userName" />
+		<column groups="list" name="auth_disp" alias="userDisp" />
+		<column groups="list" name="status" alias="status" />
+		<column groups="" name="work_title" alias="workTitle" />
+	</table>
+	<table name="work_plan_actor">
+		<column groups="list" name="itemid" alias="id" />
+		<column groups="list" name="userid" alias="userId" />
+		<column groups="list" name="user_name" alias="userName" />
+		<column groups="list" name="user_disp" alias="userDisp" />
+		<column groups="list" name="seq_order" alias="order" />
+	</table>
+	<table name="work_item_atch">
+		<column groups="list" name="fileid" alias="id" />
+		<column groups="" name="file_gid" alias="gid" />
+		<column groups="list" name="file_name" alias="filename" />
+		<column groups="list" name="rgst_userid" alias="rgstUserId" />
+		<column groups="list" name="rgst_name" alias="rgstUserName" />
+		<column groups="list" name="rgst_disp" alias="rgstUserDisp" />
+		<column groups="list" name="rgst_date" alias="rgstDate" />
+		<column groups="list" name="vrsn_num" alias="vrsn" />
+	</table>
+	<table name="work_item_report">
+		<column groups="list" name="fileid" alias="id" />
+		<column groups="" name="file_gid" alias="gid" />
+		<column groups="list" name="file_name" alias="filename" />
+		<column groups="list" name="rgst_userid" alias="rgstUserId" />
+		<column groups="list" name="rgst_name" alias="rgstUserName" />
+		<column groups="list" name="rgst_disp" alias="rgstUserDisp" />
+		<column groups="list" name="rgst_date" alias="rgstDate" />
+		<column groups="list" name="vrsn_num" alias="vrsn" />
+	</table>
+	<table name="work_item_fvrt">
+		<column groups="list" name="itemid" alias="itemId" />
+		<column groups="list" name="userid" alias="userId" />
+		<column groups="list" name="rgst_date" alias="rgstDate" />
+	</table>
+	<table name="work_menu_map">
+		<column groups="list" name="userid" alias="userId" />
+		<column groups="list" name="menuid" alias="menuId" />
+		<column groups="list" name="seq_order" alias="order" />
+		<column groups="list" name="ismore" alias="isMore" />
+	</table>
+	<table name="work_share_request">
+		<column groups="list" name="reqid" alias="id" />
+		<column groups="list" name="workid" alias="workId" />
+		<column groups="list" name="req_date" alias="reqDate" />
+		<column groups="list" name="req_userid" alias="reqUserId" />
+		<column groups="list" name="req_name" alias="reqUserName" />
+		<column groups="list" name="req_disp" alias="reqUserDisp" />
+		<column groups="list" name="req_comment" alias="reqComment" />
+		<column groups="list" name="status" alias="status" />
+		<column groups="list" name="res_date" alias="resDate" />
+		<column groups="list" name="res_userid" alias="resUserId" />
+		<column groups="list" name="res_name" alias="resUserName" />
+		<column groups="list" name="res_disp" alias="resUserDisp" />
+		<column groups="list" name="res_comment" alias="resComment" />
+		<column groups="list" name="isdel" alias="del" />
+		<column groups="" name="title" alias="title" />
+	</table>
+	<table name="work_history">
+		<column groups="list" name="historyid" alias="historyId" />
+		<column groups="list" name="inst_date" alias="instDate" />
+		<column groups="list" name="event" alias="event" />
+		<column groups="list" name="userid" alias="userId" />
+		<column groups="list" name="user_name" alias="userName" multilang="true" />
+		<column groups="list" name="user_disp" alias="displayName" multilang="true" />
+		<column groups="list" name="title" alias="title" multilang="true" />
+		<column groups="list" name="ref_userid" alias="refUserId" />
+		<column groups="list" name="ref_name" alias="refUserName" multilang="true" />
+		<column groups="list" name="ref_disp" alias="refUserDisp" multilang="true" />
+		<column groups="list" name="ref_url" alias="refUrl" multilang="true" />
+		<column groups="list" name="itemid" alias="itemId" />
+		<column groups="list" name="file_version_label" alias="fileVersionLabel" />
+		<column groups="list" name="file_gid" alias="fileGid" />
+		<column groups="list" name="fileid" alias="fileId" />
+		<column groups="list" name="file_name" alias="fileName" />
+	</table>
+	<table name="work_chat_item">
+		<column groups="list" name="itemid" alias="id" />
+		<column groups="list" name="chatid" alias="chatId" />
+		<column groups="list" name="userid" alias="userId" />
+		<column groups="list" name="user_disp" alias="userDisp" />
+		<column groups="list" name="user_name" alias="userName" />
+		<column groups="list" name="rgst_date" alias="rgstDate" />
+		<column groups="list" name="content" alias="content" />
+		<column groups="list" name="msg_type" alias="msgType" />
+		<column groups="list" name="tenantid" alias="tenantId" />
+		<column groups="list" name="emtcid" alias="emtcId" />
+		<column groups="list" name="cstm_field1" alias="cstmField1" />
+		<column groups="list" name="cstm_field2" alias="cstmField2" />
+		<column groups="" name="fileid" alias="fileId" />
+		<column groups="" name="file_name" alias="filename" />
+		<column groups="" name="file_size" alias="filesize" />
+		<column groups="" name="save_code" alias="type" />
+		<column groups="" name="save_path" alias="path" />
+		<column groups="" name="height" alias="height" />
+		<column groups="" name="width" alias="width" />
+		<column groups="" name="thumb_save_code" alias="thumbCode" />
+		<column groups="" name="thumb_save_path" alias="thumbPath" />
+	</table>
+	<table name="work_chat_item_file">
+		<column groups="list" name="fileid" alias="id" />
+		<column groups="list" name="itemId" alias="itemId" />
+		<column groups="list" name="file_name" alias="filename" />
+		<column groups="list" name="file_size" alias="size" />
+		<column groups="list" name="save_code" alias="type" />
+		<column groups="list" name="save_path" alias="path" />
+		<column groups="list" name="height" alias="height" />
+		<column groups="list" name="width" alias="width" />
+		<column groups="list" name="thumb_save_code" alias="thumbCode" />
+		<column groups="list" name="thumb_save_path" alias="thumbPath" />
+	</table>
+	<table name="work_item_prcs">
+		<column groups="list" name="prcsid" alias="id" />
+		<column groups="list" name="itemId" alias="itemId" />
+		<column groups="list" name="req_date" alias="reqDate" />
+		<column groups="list" name="cmplt_date" alias="cmpltDate" />
+		<column groups="list" name="status" alias="status" />
+		<column groups="list" name="prcs_type" alias="processType" />
+		<column groups="list" name="title" alias="title" />
+		<column groups="list" name="content" alias="content" />
+		<column groups="list" name="incharge_userid" alias="reqUuserId" />
+		<column groups="list" name="incharge_name" alias="reqUserName" />
+		<column groups="list" name="incharge_disp" alias="reqDisplayName" />
+		<column groups="list" name="checker_userid" alias="chkrId" />
+		<column groups="list" name="checker_name" alias="chkrName" />
+		<column groups="list" name="checker_disp" alias="chkrDisplayName" />
+		<column groups="list" name="isretrieved" alias="retrieve" />
+		<column groups="list" name="res_content" alias="resContent" />
+		<column groups="list" name="isread" alias="read" />
+		<column groups="list" name="event_date" alias="eventDate" />
+		<column groups="list" name="ismeetingReq" alias="isMeetingReq" />
+	</table>
+	<table name="work_transfer">
+		<column groups="list" name="transferid" alias="id" />
+		<column groups="list" name="req_date" alias="reqDate" />
+		<column groups="list" name="res_date" alias="cmpltDate" />
+		<column groups="list" name="status" alias="status" />
+		<column groups="list" name="title" alias="title" />
+		<column groups="list" name="req_userid" alias="reqUserId" />
+		<column groups="list" name="req_name" alias="reqUserName" />
+		<column groups="list" name="req_disp" alias="reqDisplayName" />
+		<column groups="list" name="res_userid" alias="resUserId" />
+		<column groups="list" name="res_name" alias="resUserName" />
+		<column groups="list" name="res_disp" alias="resDisplayName" />
+		<column groups="list" name="owner_userid" alias="ownerId" />
+		<column groups="list" name="owner_name" alias="ownerName" />
+		<column groups="list" name="owner_disp" alias="ownerDisplayName" />
+		<column groups="list" name="res_comment" alias="resComm" />
+		<column groups="list" name="req_comment" alias="reqComm" />
+		<column groups="list" name="total_count" alias="totalCount" />
+	</table>
+	<table name="work_transfer_item">
+		<column groups="list" name="workid" alias="id" />
+		<column groups="list" name="title" alias="title" />
+	</table>
+</sql>

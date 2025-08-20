@@ -1,0 +1,21 @@
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="./js/snowfall.jquery.js"></script>
+<style type="text/css">
+body{
+	background-color: hsla(0,0%,0%,1); 
+	background: linear-gradient( to bottom, pink 30% , skyblue 80%, blue);
+	margin: 0px;
+	overflow: hidden;
+}
+</style>
+
+<script type="text/javascript">
+$(document).on('ready',function(){
+	$(document).snowfall({deviceorientation : true, round : true, minSize: 1, maxSize:8,  flakeCount : 250});
+});
+</script>
+</head>
+<body>
+
+</body>

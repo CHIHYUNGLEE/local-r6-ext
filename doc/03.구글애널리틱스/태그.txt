@@ -1,0 +1,19 @@
+Google 태그 관리자 설치
+아래의 코드를 복사하여 웹사이트의 모든 페이지에 붙여넣으세요.
+1. 페이지의 <head>에서 최대한 위에 이 코드를 붙여넣으세요.
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MF22ZK4X');</script>
+<!-- End Google Tag Manager -->
+
+2. 여는 <body> 태그 바로 뒤에 코드를 붙여넣으세요.
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MF22ZK4X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+https://tagmanager.google.com/?hl=ko#/container/accounts/6199135819/containers/167528162/workspaces/2

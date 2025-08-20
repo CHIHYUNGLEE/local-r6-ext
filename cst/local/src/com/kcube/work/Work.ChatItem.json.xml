@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<mapping name="list" class="com.kcube.work.chat.item.WorkChatItem">
+	<bean class="com.kcube.work.chat.item.WorkChatItem">
+		<value name="id" />
+		<value name="chatId" />
+		<value name="rgstDate" />
+		<value name="content" />
+		<value name="msgType" />
+		<value name="user" method="rgstUser" />
+		<value name="tenantId" />
+		<value name="emtcId" />
+		<value name="cstmField1" />
+		<value name="cstmField2" />
+		<value name="nodeId" />
+		<value name="attachments" source="com.kcube.work.chat.item.WorkChatItem$Attachment" />
+		<value name="thumbSavePath" />
+		<value name="thumbSaveCode" />
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+	<bean class="com.kcube.work.chat.item.WorkChatItem$Attachment">
+		<value name="id" />
+		<value name="size" method="filesize" />
+		<value name="filename" />
+		<value name="path" />
+		<value name="type" />
+		<value name="method" />
+		<value name="height" />
+		<value name="width" />
+		<value name="thumb" source="com.kcube.sys.upload.Upload" />
+	</bean>
+	<bean class="com.kcube.sys.upload.Upload">
+		<value name="id" />
+		<value name="path" />
+		<value name="type" />
+		<value name="filename" />
+		<value name="size" method="filesize" />
+		<value name="method" />
+		<value name="hashmd5" />
+	</bean>
+</mapping>

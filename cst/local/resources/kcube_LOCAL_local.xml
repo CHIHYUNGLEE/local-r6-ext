@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context 
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop.xsd">
+			<!-- 사이트 기본 설정 -->
+	<bean id="http" class="com.kcube.lib.http.JslSpring">
+		<property name="client">
+			<value>LOCAL</value>
+		</property>
+		<property name="attachmentCharset">
+			<value>utf-8</value>
+		</property>
+	</bean>
+	<bean id="KcubeRepository" class="com.kcube.lib.repo.KcubeRepository">
+		<property name="width">
+			<value>10</value>
+		</property>
+		<property name="depth">
+			<value>3</value>
+		</property>
+		<property name="root">
+			<value>c:/kcube-local-repository</value>
+		</property>
+	</bean>
+<!-- 	<bean id="ThumbnailRepository" class="com.kcube.lib.repo.ThumbnailRepository">
+		<property name="sub">
+			<value>thumb</value>
+		</property>
+	</bean>
+	<bean id="EmpThumbnailRepository" class="com.kcube.lib.repo.EmpThumbnailRepository">
+		<property name="sub">
+			<value>empThumb</value>
+		</property>
+	</bean> -->
+	<bean id="repo" class="com.kcube.lib.repo.RepositorySpring">
+		<property name="repositories">
+			<map>
+				<entry key="1000">
+					<ref bean="KcubeRepository" />
+				</entry>
+			</map>
+		</property>
+		<property name="defaultRepositoryType">
+			<value>1000</value>
+		</property>
+		<property name="contentsRepositoryType">
+			<value>2000</value>
+		</property>
+	</bean>
+	<bean id="EmployeeLogin" class="com.kcube.sys.emp.EmployeeLogin">
+		<property name="errorPage">
+			<value>/pub/login/login.jsp</value>
+		</property>
+		<property name="sessionMaxInterval">
+			<value>72000</value>
+		</property>
+		<property name="checkPassword">
+			<value>false</value>
+		</property>
+		<property name="jwtScrtKey">
+			<value>kcubescrtkeydummy</value>
+		</property>
+		<property name="kcubeAuthUrl">
+			<value></value>
+		</property>
+	</bean>
+	<bean id="ClobSpring" class="com.kcube.lib.jdbc.ClobSpring">
+		<property name="clobClass">
+			<value>oracle.sql.CLOB</value>
+			<!-- DB가 tibero 인 경우 
+			<value>com.tmax.tibero.jdbc.TbClob</value>
+			-->
+			<!-- WAS가  weblogic인 경우
+			<value>weblogic.jdbc.vendor.oracle.OracleThinClob</value>
+			-->
+		</property>
+	</bean>
+	<!--bean id="ScheduleSpring" class="com.kcube.sys.job.ScheduleSpring">
+		<property name="timeZoneId">
+			<value>Asia/Seoul</value>
+		</property>
+	</bean-->
+	<bean id="login" class="com.kcube.sys.login.LoginSpring">
+		<property name="menuCodes">
+			<map>
+				<entry key="/path/name.jsp">
+					<value>code</value>
+				</entry>
+			</map>
+		</property>
+		<property name="loginModule">
+			<ref bean="EmployeeLogin" />
+		</property>
+	</bean>
+	<!-- 첨부문서 미리보기 -->
+	<bean id="docviewer" class="com.kcube.ext.docviewer.DocviewerSpring">
+		<!-- Symboic Link 를 사용해야함 -->
+		<property name="resultRoot">
+			<value>/data/repository/R6/convertor/result</value>
+		</property>
+		<property name="resultPrefix">
+			<value>/ext/docviewer/result</value>
+		</property>
+		<property name="convt">
+			<value>/data/repository/R6/convertor/bin/</value>
+		</property>
+		<!-- command line의 encoding을 지정합니다. 환경에따라 CP949, CP932, UTF8, ASCII 중 하나로 설정하면 됩니다 -->
+		<property name="cmdEnc">
+			<value>UTF8</value>
+		</property>
+		<!-- 첨부문서 미리 보기를 사용하려면 모듈명(key)와 파일테이블(value)를 추가해야함 -->
+		<property name="attach">
+			<map>
+				<entry key="KMS">
+					<map>
+						<entry key="fileTable" value="KM_ITEM_FILE"></entry>
+						<entry key="user" value="KItemUser.DownloadPermissionByUser"></entry>
+						<entry key="owner" value="KItemOwner.DownloadPermissionByOwner"></entry>
+						<entry key="master" value="KItemMaster.DownloadPermissionByMaster"></entry>
+						<entry key="admin" value="KItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="BBS">
+					<map>
+						<entry key="fileTable" value="BD_ITEM_FILE"></entry>
+						<entry key="user" value="BdItemUser.DownloadPermissionByUser"></entry>
+						<entry key="owner" value="BdItemOwner.DownloadPermissionByOwner"></entry>
+						<entry key="admin" value="BdItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="QNA">
+					<map>
+						<entry key="fileTable" value="QNA_ITEM_FILE"></entry>
+						<entry key="user" value="QaItemUser.DownloadPermissionByUser"></entry>
+						<entry key="owner" value="QaItemOwner.DownloadPermissionByOwner"></entry>
+						<entry key="admin" value="QaItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="GP">
+					<map>
+						<entry key="fileTable" value="GP_ITEM_FILE"></entry>
+						<entry key="user" value="GroupItemUser.DownloadPermissionByUser"></entry>
+					</map>
+				</entry>
+				<entry key="TASK">
+					<map>
+						<entry key="fileTable" value="TASK_ITEM_FILE"></entry>
+						<entry key="user" value="TaskUser.DownloadPermissionByUser"></entry>
+						<entry key="admin" value="TaskAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="TASKPLAN">
+					<map>
+						<entry key="fileTable" value="TASK_PLAN_FILE"></entry>
+						<entry key="actor" value="TaskPlanActor.DownloadPermissionByActor"></entry>
+						<entry key="admin" value="TaskPlanAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="WIKI">
+					<map>
+						<entry key="fileTable" value="WIKI_ITEM_FILE"></entry>
+						<entry key="user" value="WikiItemUser.DownloadPermissionByUser"></entry>
+						<entry key="admin" value="WikiItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="ECM">
+					<map>
+						<entry key="fileTable" value="DM_DOCUMENT_FILE"></entry>
+						<entry key="user" value="DocumentFileUser.DownloadPermissionByUser"></entry>
+					</map>
+				</entry>
+				<entry key="BUILDER">
+					<map>
+						<entry key="fileTable" value="BLDR_ITEM_FILE"></entry>
+						<entry key="user" value="BldrItemUser.DownloadPermissionByUser"></entry>
+						<entry key="owner" value="BldrItemOwner.DownloadPermissionByOwner"></entry>
+						<entry key="master" value="BldrItemMaster.DownloadPermissionByMaster"></entry>
+						<entry key="admin" value="BldrItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="CALENDAR">
+					<map>
+						<entry key="fileTable" value="CA_EVENT_FILE"></entry>
+					</map>
+				</entry>
+				<entry key="ALBUM">
+					<map>
+						<entry key="fileTable" value="AL_ITEM_FILE"></entry>
+						<entry key="user" value="AlItemUser.DownloadPermissionByUser"></entry>
+						<entry key="owner" value="AlItemOwner.DownloadPermissionByOwner"></entry>
+						<entry key="admin" value="AlItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="ENQT">
+					<map>
+						<entry key="fileTable" value="ENQT_FILE"></entry>
+						<entry key="user" value="EnqtUser.DownloadPermissionByUser"></entry>
+						<entry key="admin" value="EnqtAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="MBS">
+					<map>
+						<entry key="fileTable" value="MB_ITEM_FILE"></entry>
+						<entry key="user" value="MbItemUser.DownloadPermissionByUser"></entry>
+						<entry key="owner" value="MbItemOwner.DownloadPermissionByOwner"></entry>
+						<entry key="master" value="MbItemMaster.DownloadPermissionByMaster"></entry>
+						<entry key="admin" value="MbItemAdmin.DownloadPermissionByAdmin"></entry>
+					</map>
+				</entry>
+				<entry key="NOTICE">
+					<map>
+						<entry key="fileTable" value="MI_ITEM_FILE"></entry>
+						<entry key="user" value="NoticeUser.DownloadPermissionByUser"></entry>
+					</map>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	
+	<!-- GCOP별도 구축시 사용 <bean id="license" class="com.kcube.sys.license.License"> 
+		<property name="licenseClass"><value>com.kcube.group.gcop.GcopLicenseUser</value></property> 
+		</bean> -->
+	<bean id="hibernate" class="com.kcube.lib.jdbc.DbSpring">
+		<property name="hibernate">
+			<props>
+				<!-- Jeus7.x의 경우 java:comp/env/jdbc/kcube 처럼 java:comp/env/앞에 붙여줘야 함 -->
+				<!-- Jeus6.x의 경우에도 version에 따라 붙여줘야 하는 경우 있음 -->
+				<prop key="hibernate.connection.datasource">jdbc/kcube</prop>
+
+				<!-- <prop key="hibernate.connection.release_mode">on_close</prop> -->
+				<prop key="hibernate.connection.handling_mode">IMMEDIATE_ACQUISITION_AND_HOLD</prop>
+
+				<!-- Transaction 이 없는 경우 commitAndClose() 하면 에러 발생하는 것 처리 -->
+				<prop key="hibernate.allow_update_outside_transaction">true</prop>
+
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle12cDialect</prop> 
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>-->
+				<!-- prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop -->
+				<!-- prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop -->
+				<!-- prop key="hibernate.default_schema">XXX</prop -->
+				<!--prop key="hibernate.mariaDB">true</prop -->
+				<!-- <prop key="hibernate.dialect">org.hibernate.dialect.CUBRIDDialect</prop> -->
+				<prop key="hibernate.jdbc.use_streams_for_binary">false</prop>
+				<!-- prop key="hibernate.dialect">com.kcube.lib.sql.KcubeSQLServerDialect</prop -->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="internationalization" class="com.kcube.sys.i18n.I18N">
+		<property name="locales">
+			<list>
+				<value>ko_KR</value>
+				<value>en_EN</value>
+			</list>
+		</property>
+		<property name="defaultLocale">
+			<value>ko_KR</value>
+		</property>
+	</bean>
+	<bean id="aopSpring" class="com.kcube.lib.action.AopSpring">
+		<property name="aopConfigs">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	
+	<!-- 웹소켓 서버 옵션을 설정한다. R6d의 웹소켓은 WAS 의 websocket을 사용하므로 WAS 의 포트를 그대로 사용한다.
+		하단의 port property 는 단순히 현재 WAS 의 serverName 을 생성하기 위한 unique 한 포트번호를 얻기 위한 것이므로, 외부로 open 될 필요없고
+		단순히 열려있는 포트를 아무거나 지정해도 되며 socketServer는 실행되나 실제로 사용되지 socketServer이다.
+	-->
+	<!-- -->
+	<bean id="socketSpring" class="com.kcube.sys.websocket.SocketServerSpring">  
+		<property name="port">
+			<value>8025</value>
+		</property>
+		<property name="use">
+			<value>true</value>
+		</property>
+	</bean>
+	
+	<!-- WebDAV 서버 사용 url -->
+	<!--
+	<bean class="com.kcube.sys.webdav.WebDavSpring">
+		<property name="url">
+			<value>http://domain/contextpath/webdav/</value>
+		</property>
+	</bean>
+	-->
+	
+	<!-- JGROUPS tcp 설정 -->
+	<!--  -->
+	<bean id="cache" class="com.kcube.lib.runtime.CacheSpring">
+		<property name="props">
+			<value>tcp.xml</value>
+		</property>
+		<property name="groupId">
+			<value>PORTAL_LOCAL</value>
+		</property>
+	</bean>
+	
+	<!-- 개인정보보호법 암복호화에 사용하는 모듈을 설정한다. -->
+	<bean id="PrivacyEncryptionDefault" class="com.kcube.lib.privacy.PrivacyEncryptionDefault" />
+	<bean id="PrivacyEncryptionSpring" class="com.kcube.lib.privacy.PrivacyEncryptionSpring">
+		<property name="PrivacyEncryption">
+			<ref bean="PrivacyEncryptionDefault" />
+		</property>
+	</bean>
+	<bean id="sys" class="com.kcube.sys.AppSpring">
+		<property name="version">
+			<value>1.8</value>
+		</property>
+		<property name="modules">
+			<list>
+				<value>com.kcube.local.sync.SyncCs</value>  
+				<value>com.kcube.sys.emp.CstmEmployee</value>
+				<value>com.kcube.work.Work</value>
+			<!-- 	<value>com.kcube.sys.conf.Config</value>
+				<value>com.kcube.sys.conf.module.ModuleConfig</value>
+				<value>com.kcube.sys.conf.module.notify.NotifyConfig</value>
+				<value>com.kcube.sys.conf.module.alimi.AlimiConfig</value>
+				<value>com.kcube.sys.deploy.Deploy</value>
+				<value>com.kcube.sys.module.dev.Module</value>
+				<value>com.kcube.sys.module.app.ModuleApp</value>
+				<value>com.kcube.sys.job.Schedule</value>
+				<value>com.kcube.sys.lock.Lock</value>
+				<value>com.kcube.sys.log.SystemLog</value>
+				<value>com.kcube.sys.mail.Mail</value>
+				<value>com.kcube.sys.milg.Mileage</value>
+				<value>com.kcube.sys.movie.Movie</value
+				<value>com.kcube.sys.alimi.Alimi</value>
+				<value>com.kcube.sys.alimi.friend.AlimiFriend</value>
+				<value>com.kcube.sys.alimi.legacy.AlimiLegacy</value>
+				<value>com.kcube.sys.audit.Audit</value>
+				<value>com.kcube.sys.emp.Employee</value>
+				<value>com.kcube.sys.usr.User</value>
+				<value>com.kcube.sys.upload.Upload</value>
+				<value>com.kcube.sys.msg.Message</value>
+				<value>com.kcube.sys.mobile.app.MobileApp</value>
+				<value>com.kcube.sys.mobile.push.Push</value>
+				<value>com.kcube.sys.login.Login</value>
+				<value>com.kcube.sys.module.builder.Builder</value>
+				<value>com.kcube.sys.module.builder.flow.Flow</value>
+				<value>com.kcube.sys.module.builder.item.BldrItem</value>
+				<value>com.kcube.sys.module.category.AppCategory</value>
+				<value>com.kcube.sys.vrsn.Revision</value>
+				<value>com.kcube.sys.i18n.I18N</value>
+				<value>com.kcube.sys.security.UserRole</value>
+				<value>com.kcube.sys.websocket.message.MessageServer</value>
+				<value>com.kcube.sys.webdav.WebDav</value>
+				<value>com.kcube.sys.tenant.Tenant</value>
+				<value>com.kcube.lib.http.JslLog</value>
+				<value>com.kcube.map.Folder</value>
+				<value>com.kcube.map.axis.Axis</value>
+				<value>com.kcube.map.mstr.FolderMstr</value>
+				<value>com.kcube.map.grp.ScrtGroup</value>
+				<value>com.kcube.lib.repo.DatabaseRecord</value>
+				<value>com.kcube.doc.expr.Expire</value>
+				<value>com.kcube.sync.config.SyncConfig</value>
+				<value>com.kcube.sync.emp.SyncEmp</value>
+				<value>com.kcube.sync.org.SyncOrg</value>
+				<value>com.kcube.milg.grant.Grant</value>
+				<value>com.kcube.milg.rwrd.Reward</value>
+				<value>com.kcube.space.Space</value>
+				<value>com.kcube.space.mainMenu.SpaceMainMenu</value>
+				<value>com.kcube.space.menu.SpaceMenu</value>
+				<value>com.kcube.space.portal.SpacePortal</value>
+				<value>com.kcube.space.portlet.SpacePortlet</value>
+				<value>com.kcube.space.level.SpaceLevel</value>
+				<value>com.kcube.space.group.SpaceGroup</value>
+				<value>com.kcube.space.member.SpaceMember</value>
+				<value>com.kcube.space.message.SpaceMessage</value>
+				<value>com.kcube.space.library.LibrarySpace</value>
+				<value>com.kcube.space.team.TeamSpace</value>
+				<value>com.kcube.space.team.rule.TeamRule</value>
+				<value>com.kcube.space.work.WorkSpace</value>
+				<value>com.kcube.space.my.MySpace</value>
+				<value>com.kcube.space.userMenu.SpaceUserMenu</value>
+				<value>com.kcube.space.mdi.SpaceMdiHistory</value>
+				<value>com.kcube.stat.StatConfigItem</value>
+				<value>com.kcube.stat.act.HistStat</value>
+				<value>com.kcube.stat.milg.MilgStat</value>
+				<value>com.kcube.stat.login.LoginAudit</value>
+				<value>com.kcube.stat.tag.Tag</value>
+				<value>com.kcube.stat.query.StatQuery</value>
+				<value>com.kcube.stat.act.HistStatConfigItem</value>
+				<value>com.kcube.ext.conf.Custom</value>
+				<value>com.kcube.search.Search</value>
+				<value>com.kcube.ekp.scrap.Scrap</value>
+				<value>com.kcube.ekp.grp.UserGroup</value>
+				<value>com.kcube.ekp.vitae.Vitae</value>
+				<value>com.kcube.ekp.vitae.Area</value>
+				<value>com.kcube.ekp.ntc.Notice</value>
+				<value>com.kcube.ekp.exprt.Expert</value>
+				<value>com.kcube.ekp.fvrt.Favorite</value>
+				<value>com.kcube.ekp.fvrt.FavoriteSend</value>
+				<value>com.kcube.doc.logScrap.LogScrap</value>
+				<value>com.kcube.ekp.memo.Memo</value>
+				<value>com.kcube.sys.websocket.SocketServer</value>
+				<value>com.kcube.ptl.log.PortletLog</value>
+				CoP Add
+				<value>com.kcube.group.menu.Menu</value>
+				<value>com.kcube.group.level.Level</value>
+				<value>com.kcube.group.ptl.GroupPortlet</value>
+				<value>com.kcube.group.ptl.GroupPortal</value>
+				<value>com.kcube.group.subgroup.SubGroup</value>
+				<value>com.kcube.group.member.Member</value>
+				<value>com.kcube.group.cop.Cop</value>
+				<value>com.kcube.group.cop.manage.Manage</value>
+				<value>com.kcube.group.bbs.GroupItem</value>
+				<value>com.kcube.group.wiki.GroupWikiItem</value>
+				<value>com.kcube.group.bbs.fr.GroupItemForum</value>
+				<value>com.kcube.group.comment.GroupComment</value>
+				<value>com.kcube.group.milg.MilgGrant</value>
+				<value>com.kcube.group.milg.MilgDistribute</value>
+				<value>com.kcube.group.point.GroupPoint</value>
+				<value>com.kcube.group.stat.GroupStat</value>
+				<value>com.kcube.group.quota.GroupQuota</value>
+				<value>com.kcube.group.today.GroupToday</value>
+				<value>com.kcube.group.mail.GroupMail</value>
+				CoP End
+				<value>com.kcube.talks.Talk</value>
+				<value>com.kcube.talks.friend.TalkFriend</value>
+				<value>com.kcube.talks.friend.group.TalkGroup</value>
+				<value>com.kcube.talks.item.TalkItem</value>
+				<value>com.kcube.talks.conf.TalkConfig</value>
+				<value>com.kcube.talks.msg.TalkMessage</value>
+				Calendar
+				<value>com.kcube.calendar.Calendar</value>
+				<value>com.kcube.calendar.holiday.Holiday</value>
+				<value>com.kcube.calendar.resource.CaResource</value>
+				<value>com.kcube.calendar.resource.request.ResourceRequest</value>
+				<value>com.kcube.calendar.resource.template.CaResourceTemplate</value>
+				<value>com.kcube.calendar.event.CaEvent</value>
+				Calendar
+				문서미리 보기
+				<value>com.kcube.ext.docviewer.Docviewer</value>
+				포털공지
+				<value>com.kcube.ekp.pn.PnItem</value>
+				<value>com.kcube.sys.common.CommonConfig</value>
+				<value>com.kcube.doc.opn.Opinion</value>
+				<value>com.kcube.doc.symp.Sympathy</value>
+				GroupRole 역할관리
+				<value>com.kcube.sys.role.GroupRole</value>
+				App 라이센스
+				<value>com.kcube.sys.license.License</value>
+				******* ECM Module **********
+				<value>com.kcube.ecm.space.DmSpace</value>
+				<value>com.kcube.ecm.space.member.DmSpaceMember</value>
+				<value>com.kcube.ecm.space.transfer.DmSpaceTransfer</value>
+				<value>com.kcube.ecm.space.trash.DmSpaceTrash</value>
+				<value>com.kcube.ecm.space.history.DmSpaceHistory</value>
+				<value>com.kcube.ecm.space.module.app.AppDmSpace</value>
+				<value>com.kcube.ecm.space.module.company.CompanyDmSpace</value>
+				<value>com.kcube.ecm.template.mapping.DmTemplateFolder</value>
+				<value>com.kcube.ecm.space.module.personal.PersonalDmSpace</value>
+				<value>com.kcube.ecm.space.module.task.TaskDmSpace</value>
+				<value>com.kcube.ecm.space.module.team.TeamDmSpace</value>
+				<value>com.kcube.ecm.space.module.team.rule.TeamDmSpaceRule</value>
+				<value>com.kcube.ecm.folder.DmFolder</value>
+				<value>com.kcube.ecm.folder.history.DmFolderHistory</value>
+				<value>com.kcube.ecm.document.Document</value>
+				<value>com.kcube.ecm.document.request.DocumentRequest</value>
+				<value>com.kcube.ecm.document.file.DocumentFile</value>
+				<value>com.kcube.ecm.document.history.DocumentHistory</value>
+				<value>com.kcube.ecm.template.DmTemplate</value>
+				<value>com.kcube.ecm.favorite.DmFavorite</value>
+				<value>com.kcube.ecm.request.DmRequest</value>
+				<value>com.kcube.ecm.share.DmShare</value>
+				<value>com.kcube.ecm.export.DmExport</value>
+				<value>com.kcube.ecm.transfer.DmTransfer</value>
+				<value>com.kcube.ecm.collabo.DmOrder</value>
+				<value>com.kcube.ecm.prcstmpl.DmPrcsTmpl</value>
+				<value>com.kcube.sys.appr.Approver</value>
+				ITMsystem MyGuard VF Module
+				<value>com.kcube.ext.myguard.MyGuard</value>
+				SAML
+				<value>com.kcube.sys.saml.sp.Saml</value>
+				TODO
+				<value>com.kcube.calendar.todo.Todo</value>
+				ShortUrl
+				<value>com.kcube.sys.shorturl.ShortUrl</value> -->
+			</list>
+		</property> 
+	</bean>
+	<!-- Default Protocols udp.xml -->
+	<!--bean id="cache" class="com.kcube.lib.runtime.CacheSpring"> <property name="groupId"> <value>KCube</value> </property> 
+		</bean -->
+</beans>

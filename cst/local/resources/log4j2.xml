@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Log4j 설정
+Appenders와 Logger를 설정해서 원하는 로그를 기록할 수 있습니다.
+JVM 파라미터로 kcube.logDirectory를 설정하지 않고 File logger를 사용할 경우 실행파일이 있는 폴더의 상위 폴더와 동일한 레벨의 logs(../logs)에 로그가 기록됩니다.
+	Eclipse : Eclipse가 설치된 폴더와 동일한 위치에 로그폴더 생성.
+	Tomcat : Tomcat의 logs 폴더에 로그 생성.
+
+JVM Arguments
+	Eclipse : Server > Overview > Open launch configuration > (x)= Arguments > VM arguments
+	Tomcat : setenv.sh / setenv.bat
+
+	-Dlog4j.configurationFile=file:\C:\devel\log4j2_KCUBER6.xml	
+	-Dkcube.logDirectory=C:\devel\logs
+-->
+<Configuration status="INFO">
+	<Properties>
+		<Property name="LOG_PATTERN">[%d{yyyy-MM-dd HH:mm:ss, SSS}] %-5p: %c - %m%n</Property>
+		<Property name="LOG_PATH">${sys:kcube.logDirectory:-../logs}</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout/>
+		</Console>
+		<!--
+		<RollingFile name="kcube-debug" fileName="${LOG_PATH}/kcube-debug.log"
+				filePattern="${LOG_PATH}/kcube-debug-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10"/>
+		</RollingFile>-->
+		<RollingFile name="kcube-sqlLogging" fileName="${LOG_PATH}/sqlquery.log"
+				filePattern="${LOG_PATH}/rolling-kcube-sqlquery-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}"/>
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10"/>
+		</RollingFile>
+		
+	</Appenders>
+	<Loggers>
+		<!-- Package Debug Logger -->
+		<!--
+		<Logger name="com.kcube.lib" additivity="false" level="debug">
+			<AppenderRef ref="Console"/>
+			<AppenderRef ref="kcube-debug" />
+		</Logger>
+		<Logger name="com.kcube.sys.emp" additivity="false" level="debug">
+			<AppenderRef ref="kcube-debug" />
+		</Logger>
+		-->
+		<!-- SQL Query Logging 
+		1. JDBC Driver 변경하기
+			Oracle     ==> driverClassName="core.log.jdbc.driver.OracleDriver"
+			PostgreSQL ==> driverClassName="core.log.jdbc.driver.PostgresqlDriver"
+			MySQL      ==> driverClassName="core.log.jdbc.driver.MysqlDriver"
+		반드시 개발계에서만 사용해야합니다. 운영서버에서는 성능이 저하될 수 있습니다.
+		-->
+		<!---->
+		<Logger name="core.log.kcubesql" additivity="false" level="debug">
+			<AppenderRef ref="kcube-sqlLogging" />
+		</Logger>
+		
+		<Root level="warn" additivity="false">
+			<AppenderRef ref="Console"/>
+		</Root>
+	</Loggers>
+</Configuration>

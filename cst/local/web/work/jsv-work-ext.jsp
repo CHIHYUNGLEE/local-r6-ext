@@ -1,0 +1,3 @@
+<link type="text/css" href="<%= request.getContextPath() %>/work/work_min.css?nocache=<%=com.kcube.sys.AppServlet.getNoCacheStr() %>" rel="stylesheet">
+<script type="text/javascript" src="<%= request.getContextPath() %>/work/script.language.<c:out value="${locale.language}"/>.work.js?nocache=<%=com.kcube.sys.AppServlet.getNoCacheStr() %>"></script> 
+<script type="text/javascript" src="<%= request.getContextPath() %>/work/work_min.js?nocache=<%=com.kcube.sys.AppServlet.getNoCacheStr() %>"></script>

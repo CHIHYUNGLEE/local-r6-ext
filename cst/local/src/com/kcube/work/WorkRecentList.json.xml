@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<mapping name="recent" class="com.kcube.work.recent.WorkRecent">
+	<bean class="com.kcube.work.recent.WorkRecent">
+		<value name="list" source="com.kcube.work.recent.WorkRecent$RecentData" />
+	</bean>
+	<bean class="com.kcube.work.recent.WorkRecent$RecentData">
+		<value name="actors" source="com.kcube.sys.usr.User" />
+		<value name="prcs" source="com.kcube.work.process.WorkProcess"/>
+		<value name="cmpltDate" />
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+	<bean class="com.kcube.work.process.WorkProcess">
+		<value name="id" />
+		<value name="reqDate" />
+		<value name="cmpltDate" />
+		<value name="gid" />
+		<value name="status" />
+		<value name="processType" />
+		<value name="title" />
+		<value name="inChage" />
+		<value name="checker" />
+		<value name="title" />
+		<value name="resContent" />
+		<value name="content" />
+		<value name="retrieve" />
+		<value name="read" />
+	</bean>
+</mapping>

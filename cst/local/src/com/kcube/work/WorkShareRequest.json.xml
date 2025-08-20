@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<mapping name="read" class="com.kcube.work.request.share.WorkShareRequest">
+	<bean class="com.kcube.work.request.share.WorkShareRequest">
+		<value name="id" />
+		<value name="workId" />
+		<value name="reqDate" />
+		<value name="reqUser" />
+		<value name="reqComment" />
+		<value name="status" />
+		<value name="resDate" />
+		<value name="resUser" />
+		<value name="resComment" />
+		<value name="del" />
+	</bean>
+	<bean class="com.kcube.sys.usr.User">
+		<value name="id" method="userId" />
+		<value name="name" />
+		<value name="displayName" />
+	</bean>
+</mapping>
